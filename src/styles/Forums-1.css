@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+/* ------section -------*/
+.items_contenues{
+    border-bottom: solid 1px black;
+}
+#start{
+    display: flex;
+}
+a {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+h3.item_name {
+    grid-column: 1;
+}
+p.item_text {
+    grid-column: 2;
+}
+input#meeting-time {
+    grid-column: 3;
+    width: 80%;
+}
+/* ------section fin-------*/

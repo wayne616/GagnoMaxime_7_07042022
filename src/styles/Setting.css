@@ -1,0 +1,73 @@
+body{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+/* ------régalge-------*/
+/* ------section principal-------*/
+
+section#section_principal {
+    display: grid;
+    grid-template-columns: 50% auto;
+}
+/* ------section principale fin -------*/
+/* ------section setting-------*/
+#setting{
+    border-right: 1px solid black;
+}
+ul#ul_setting {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+li.li_setting {
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+}
+/* ------section setting fin-------*/
+/* ------section statut-------*/
+#statut{
+    padding-left: 5px;
+}
+#infos{
+    border-bottom: 1px solid black;
+}
+ul#ul_infos {
+    list-style: none;
+}
+li.li_infos{
+    display: flex;
+    align-items: center;
+}
+.infos_bdd{
+    border: 1px solid black;    
+    margin: 1rem;
+}
+ul#ul_statut {
+    list-style: none;
+}
+/* ------section statut fin-------*/
+/* ------footer-------*/
+#Groupomania_Logo_footer{
+    display: flex;
+    justify-content: center;
+    border-top: solid 1px black;
+}
+#logo_footer{
+    margin-top: -4rem;
+}
+/* ------footer fin-------*/
+.fa-circle{
+    color: red;
+}
+.fa-check-circle{
+    color: green;
+}
+.fa-ban{
+    color: red;
+}
+/* ------réglage fin -------*/

@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    background-color: white;
+  }
+  
+  /* ------nav logo-------*/
+  nav#nav_Logo {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* ------nav logo fin-------*/
+  /* ------section box_connexion-------*/
+  #box_connexion {
+    display: grid;
+    align-items: center;
+    grid-template: "a b ";
+  }
+  
+  /* ------section box_connexion fin -------*/
+  /* ------section login-------*/
+  #Block_Login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #txt_Connexion {
+    border-bottom: 2px solid #000000;
+  }
+  
+  form#form_connexion {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  input {
+    border-radius: 3rem;
+  }
+  
+  /* ------section login fin-------*/
+  /* ------section singup-------*/
+  section#section_Singup {
+    border-left: 2px solid black;
+  }
+  
+  div#Block_Singup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #txt_inscription {
+    border-bottom: 2px solid #000000;
+  }
+  
+  form#form_inscription {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+  /* ------section singup fin-------*/
+  /* ------footer-------*/
+  /* footer {
+    border: solid 1px black;
+    margin: 50px;
+  } */
+  
+  /* ------footer fin-------*/
+  /*---------------Connexion.html fin---------------------*/
+  

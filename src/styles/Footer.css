@@ -1,0 +1,17 @@
+form#form_txt {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+  #news {
+    width: 80%;
+    border-radius: 1rem;
+  }
+  #btn {
+    display: flex;
+  }
+  button {
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+  }

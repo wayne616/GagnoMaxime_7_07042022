@@ -1,0 +1,34 @@
+/*---------------navbar---------------------*/
+div#header {
+  display: grid;
+  justify-items: center;
+}
+#nav_Logo {
+  grid-column: 2;
+}
+#img_Logo {
+  margin: -4rem;
+}
+div#div_buttom_signout {
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+}
+#navbar {
+  border: solid 1px black;
+}
+
+#nav_liste {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+}
+
+.icone {
+  margin-right: 0.5rem;
+}
+
+/*---------------navbar fin---------------------*/

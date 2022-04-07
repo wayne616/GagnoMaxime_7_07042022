@@ -1,0 +1,30 @@
+body{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+/* ------section research-------*/
+#searchbox{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* ------section research fin-------*/
+/* ------section contact fin-------*/
+#directory{
+    display: grid;
+}
+th.block-A-Z {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: solid 1px rgba(0, 0, 0, 0.304);
+    background-color: rgba(128, 128, 128, 0.4);
+}
+/* ------section contact fin-------*/
+
+
