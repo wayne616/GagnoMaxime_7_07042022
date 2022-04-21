@@ -6,13 +6,6 @@ import Connexion from './pages/Connexion/Connexion';
 
 import Home from './pages/Home/Home';
 
-import Contacted from './pages/Contacted/Contacted';
-
-import Forums1 from './pages/Forums/Forums_1';
-import Forums2 from './pages/Forums/Forums_2';
-
-import Message1 from './pages/Message/Send_1';
-import Message2 from './pages/Message/Send_2';
 
 import Setting from './pages/Setting/Setting';
 
@@ -28,21 +21,6 @@ ReactDOM.render(
       <Switch>
         <Route path="/Home">
           <Home />
-        </Route>
-        <Route path="/Contacted">
-          <Contacted />
-        </Route>
-        <Route path="/Forums1">
-          <Forums1 />
-        </Route>
-        <Route path="/Forums2">
-          <Forums2 />
-        </Route>
-        <Route path="/Message1">
-          <Message1 />
-        </Route>
-        <Route path="/Message2">
-          <Message2 />
         </Route>
         <Route path="/Setting">
           <Setting />

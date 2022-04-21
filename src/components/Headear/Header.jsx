@@ -22,21 +22,6 @@ function Header() {
               <i className="fas fa-home icone"></i>Actualité
             </li>
           </a>
-          <a href="Message1">
-            <li>
-              <i className="far fa-comment icone"></i>Message
-            </li>
-          </a>
-          <a href="Forums1">
-            <li>
-              <i className="far fa-comment-alt icone"></i>Forum
-            </li>
-          </a>
-          <a href="Contacted">
-            <li>
-              <i className="far fa-address-book icone"></i>Contacte
-            </li>
-          </a>
           <a href="Setting">
             <li>
               <i className="fas fa-user-cog icone"></i>Paramétre
