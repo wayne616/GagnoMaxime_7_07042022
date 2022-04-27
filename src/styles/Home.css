@@ -23,6 +23,9 @@ body{
       background-color: rgba(9, 135, 238, 0.123);
       margin: 1rem;
     }
+    .Button{
+      cursor: pointer;
+    }
     /*---------------section actualité fin---------------------*/
     /*---------------index.html fin---------------------*/
   

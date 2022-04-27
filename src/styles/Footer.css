@@ -3,7 +3,7 @@ form#form_txt {
   flex-direction: row;
   justify-content: space-evenly;
 }
-  #news {
+  #text {
     width: 80%;
     border-radius: 1rem;
   }

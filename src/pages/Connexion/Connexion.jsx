@@ -1,88 +1,60 @@
-// import React, { useState, useEffect } from 'react';
-import React from 'react';
-// import { useHistory } from "react-router-dom";
-import axios from 'axios';
+import React, { useState } from 'react';
+// import React, { useRef, useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import Axios from 'axios';
 import logo from '../../assets/logo.png';
 import '../../styles/connexion.css';
-import { state } from '../../../back-end/config/DB';
 
 // const User_Regex = /^[a-zA-Z] [a-zA-z0-9-_]{3,23}$/;
 // const Pwd_Regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 
 function Connexion() {
+    const [nom , setNom] = useState('');
+    const [prenom , setPrenom] = useState('');
+    const [email , setEmail] = useState('');
+    const [password , setPassword] = useState('');
 
-    // const [nom , setNom] = useState('');
-    // const [prenom , setPrenom] = useState('');
-    // const [email , setEmail] = useState('');
-    // const [password , setPassword] = useState('');
+    const [UserEmail, setUserEmail] = useState('')
+    const [UserPassword, setUserPassword] = useState('')
 
-    // const [UserEmail, setUserEmail] = useState('')
-    // const [UserPassword, setUserPassword] = useState('')
-
-    // // const history = useHistory();
+    const history = useHistory();
 
     // Axios.defaults.withCredentials = true;
 
-    // const register = () => {
-    //     Axios.post('/auth', {
-    //         nom: nom, 
-    //         prenom: prenom, 
-    //         email: email, 
-    //         password: password,
-    //     }).then((reponse) =>{
-    //         console.log(reponse);
-    //         alert("utilisateur créer !!");
-    //     });
-    // };
+    const register = (e) => {
+        e.preventDefault()
+        Axios.post("http://localhost:3000/api/auth/signup", {
+            nom: nom, 
+            prenom: prenom, 
+            email: email, 
+            password: password,
+        }).then((response) =>{
+            console.log(response);
+            // history.push("/home");
+            alert("utilisateur créer !!");
+        });
+    };
 
-    // const login = () => {
-    //     Axios.post('/login', {
-    //         UserEmail: UserEmail, 
-    //         UserPassword: UserPassword,
-    //     }).then((reponse) =>{
-    //         console.log(reponse.data);
-    //         alert("utilisateur connecte !!");
-    //     });
+    const login = (e) => {
+        e.preventDefault()
+        Axios.post("http://localhost:3000/api/auth/login", {
+            UserEmail: UserEmail, 
+            UserPassword: UserPassword,
+        }).then((response) =>{
+            // console.log(response.data);
+            history.push("/home");
+            alert("utilisateur connecté !!");
+        });
         
-    // };
+    };
 
     // useEffect(()=>{
-    //     Axios.get('/login')
-    //     .then((reponse) =>{
-    //         console.log(reponse);
+    //     Axios.get("http://localhost:3000/api/auth/login")
+    //     .then((response) =>{
+    //         // console.log(response);
     //     })
     // }, []);
-    state = {
-        nom : '',
-        prenom : '',
-        email : '',
-        password : '',
-    }
-
-    handleChange = event => {
-        this.setState({ 
-            nom: event.target.value, 
-            prenom: event.target.value, 
-            email: event.target.value, 
-            password: event.target.value,
-
-        });
-      }
-    
-      handleSubmit = event => {
-        event.preventDefault();
-    
-        const user = {
-          name: this.state.name
-        };
-    
-        axios.post(`http://localhost:3001/auth`, { user })
-          .then(res => {
-            console.log(res);
-            console.log(res.data);
-          })
-      }
     
     return (
         <div>
@@ -93,12 +65,12 @@ function Connexion() {
                 <section id="section_Login">
                     <div id="Block_Login">
                         <h2 id="txt_Connexion">Connexion</h2>
-                        <form onSubmit={this.handleSubmit} action="" method="post" id="form_connexion" >
-                            <input type="text" name="email" id="email_login" placeholder="Email..." onChange={this.handleChange} required />
+                        <form action="" method="" id="form_connexion" >
+                            <input type="text" name="email" id="email_login" placeholder="Email..." onChange={(e) => {setUserEmail(e.target.value)}} required />
                             <br />
-                            <input type="password" name="password" id="password_login" placeholder="password..."  onChange={this.handleChange} required />
+                            <input type="password" name="password" id="password_login" placeholder="password..."  onChange={(e) => {setUserPassword(e.target.value)}} required />
                             <br />
-                            <button type="submit">
+                            <button onClick={login}>
                                 Connexion !
                             </button>
                             <br />
@@ -108,16 +80,16 @@ function Connexion() {
                 <section id="section_Singup">
                     <div id="Block_Singup">
                         <h2 id="txt_inscription">Inscription</h2>
-                        <form onSubmit={this.handleSubmit} action="" method="post" id="form_inscription">
-                            <input type="text" name="nom" id="Nom" placeholder="Nom..." onChange={this.handleChange} required />
+                        <form action="" method="post" id="form_inscription">
+                            <input type="text" name="nom" id="Nom" placeholder="Nom..." onChange={(e)=> {setNom(e.target.value)}} required />
                             <br />
-                            <input type="text" name="prenom" id="Prénom" placeholder="Prénom..." onChange={this.handleChange} required />
+                            <input type="text" name="prenom" id="Prénom" placeholder="Prénom..." onChange={(e)=> {setPrenom(e.target.value)}} required />
                             <br />
-                            <input type="email" name="email" id="email" placeholder="Email..." onChange={this.handleChange} required />
+                            <input type="email" name="email" id="email" placeholder="Email..." onChange={(e)=> {setEmail(e.target.value)}} required />
                             <br />
-                            <input type="text" name="password" id="password" placeholder="Password..." onChange={this.handleChange} required />
+                            <input type="text" name="password" id="password" placeholder="Password..." onChange={(e)=> {setPassword(e.target.value)}} required />
                             <br />
-                            <button type="submit">
+                            <button onClick={register}>
                                 Inscription !
                             </button>
                         </form>

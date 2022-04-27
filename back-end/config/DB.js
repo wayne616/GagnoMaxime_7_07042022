@@ -1,15 +1,12 @@
-const dotenv =require ('dotenv');
-dotenv.config();
-
 const mysql = require('mysql');
-console.log(mysql);
 
 const Connection = mysql.createConnection({
   host: process.env.host,
   user: process.env.user,
   password: process.env.password,
-  db: process.env.db
+  database: process.env.db
 });
+console.log(Connection);
 Connection.connect((err) => {
   if(err){
     console.log(`error connecting: ${err.stack}`);

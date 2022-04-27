@@ -1,4 +1,4 @@
-import Header from "../../components/Headear/Header";
+import Header from "../../components/Header/Header";
 import "../../styles/Setting.css";
 
 function Setting() {
