@@ -26,13 +26,14 @@ exports.getAllMessage = (req, res, next) =>{
     });
 };
 
-// suppretion du message de la base de donné 
+// suppression du message de la base de donné 
 exports.deleteMessage = (req, res, next) => {
-    const text = req.body.text;
-    const sqlMessagedelete = "DELETE * FROM message_send SET = ? ";
+
+    const text = req.params.Id;
+    const sqlMessagedelete = "DELETE FROM message_send WHERE Id = ? ";
 
     Connection.query(sqlMessagedelete, text, (error, results) => {
        if (error) console.log(error);
-
     });
+    console.log();
 };

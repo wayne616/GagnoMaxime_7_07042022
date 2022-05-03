@@ -8,6 +8,6 @@ const messageCtrl = require('../controllers/message_send');
 
 router.get('/', messageCtrl.getAllMessage);
 router.post('/', multer, messageCtrl.createMessage);
-router.delete('/', messageCtrl.deleteMessage);
+router.delete('/:Id', messageCtrl.deleteMessage);
 
 module.exports = router;

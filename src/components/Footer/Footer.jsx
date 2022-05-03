@@ -14,7 +14,7 @@ function Footer(){
             text : text ,
         }).then((response) =>{
             console.log(response);
-            alert("message envoyer")
+            // alert("message envoyer")
         })
     };
 

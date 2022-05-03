@@ -40,9 +40,9 @@ Connection.query(
       console.log(results);
       res.json({message : "email dans la bdd"});
 
-      if (results !== 0 ) {
-        return res.status(404).json({error: "utilisateur inexistant"});
-      }
+      // if (results !== 0 ) {
+      //   return res.status(404).json({error: "utilisateur inexistant"});
+      // }
     }
   }
 )
