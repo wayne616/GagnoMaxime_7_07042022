@@ -6,6 +6,9 @@ body{
     color: black;
     cursor: pointer;
   }
+  i{
+    margin-left: 0.5rem;
+  }
   /*---------------index.html---------------------*/
     /*---------------section actualité ---------------------*/
     #Block_Actualité {
@@ -16,7 +19,16 @@ body{
       border-radius: 1rem;
       border: #0000005b solid 1px;
       margin: 1rem;
+      display: grid;
     }
+    div#test {
+      grid-column: 1;
+      border-right: solid 1px;
+  }
+  div#Com_received {
+    grid-column: 2;
+}
+
     #actualiter_send {
       border-radius: 1rem;
       border: #0000005b solid 1px;
@@ -26,6 +38,9 @@ body{
     .Button{
       cursor: pointer;
     }
+    /* #txt_Modify{
+      display: flex;
+    } */
     /*---------------section actualité fin---------------------*/
     /*---------------index.html fin---------------------*/
   
