@@ -10,7 +10,9 @@ import Home from './pages/Home/Home';
 import Setting from './pages/Setting/Setting';
 
 import Error from './components/Error/Error';
+import axios from 'axios';
  
+axios.defaults.headers.common.Authorization = "Bearer " + localStorage.token
 
 ReactDOM.render(
   <React.StrictMode>

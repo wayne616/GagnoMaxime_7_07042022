@@ -2,15 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 const multer = require('../middleware/multer-config');
-// const auth = require('../middleware/auth');
+const auth = require('../middleware/auth');
 
 const messageCtrl = require('../controllers/message_send');
 
 // router message
-router.get('/', messageCtrl.getAllMessage);
-router.post('/', multer, messageCtrl.createMessage);
-router.delete('/:Id', messageCtrl.deleteMessage);
-router.put('/:Id', messageCtrl.UpadteMessage);
+router.get('/',auth, messageCtrl.getAllMessage);
+router.post('/', auth, multer, messageCtrl.createMessage);
+router.delete('/:Id', auth, messageCtrl.deleteMessage);
+router.put('/:Id', auth, messageCtrl.UpadteMessage);
 
 //router commentaire
 router.get('/com', messageCtrl.getAllCom);

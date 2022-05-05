@@ -10,13 +10,16 @@ import '../../styles/connexion.css';
 
 
 function Connexion() {
+    
     const [nom , setNom] = useState('');
     const [prenom , setPrenom] = useState('');
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
 
-    const [UserEmail, setUserEmail] = useState('')
-    const [UserPassword, setUserPassword] = useState('')
+    const [UserEmail, setUserEmail] = useState('');
+    const [UserPassword, setUserPassword] = useState('');
+
+    // const [loginStatus, setLoginStatus] = useState("");
 
     const history = useHistory();
 
@@ -42,19 +45,14 @@ function Connexion() {
             UserEmail: UserEmail, 
             UserPassword: UserPassword,
         }).then((response) =>{
-            // console.log(response.data);
+            console.log(response.data.token);
+            localStorage.setItem("token", response.data.token)
             history.push("/home");
             alert("utilisateur connecté !!");
         });
         
     };
 
-    // useEffect(()=>{
-    //     Axios.get("http://localhost:3000/api/auth/login")
-    //     .then((response) =>{
-    //         // console.log(response);
-    //     })
-    // }, []);
     
     return (
         <div>
@@ -66,7 +64,7 @@ function Connexion() {
                     <div id="Block_Login">
                         <h2 id="txt_Connexion">Connexion</h2>
                         <form action="" method="" id="form_connexion" >
-                            <input type="text" name="email" id="email_login" placeholder="Email..." onChange={(e) => {setUserEmail(e.target.value)}} required />
+                            <input type="text" name="email" id="email_login" placeholder="Email..." autoComplete="off" onChange={(e) => {setUserEmail(e.target.value)}} required />
                             <br />
                             <input type="password" name="password" id="password_login" placeholder="password..."  onChange={(e) => {setUserPassword(e.target.value)}} required />
                             <br />

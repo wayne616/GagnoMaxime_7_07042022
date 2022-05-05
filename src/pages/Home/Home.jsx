@@ -21,7 +21,7 @@ function Home() {
     // suppresion du message
     const Delete = (Id) => {
         Axios.delete(`http://localhost:3000/api/home/${Id}`);
-        Id.preventDefault(window.location.reload());
+        // Id.preventDefault(window.location.reload());
     };
 
     // Modification du message 
@@ -45,7 +45,7 @@ function Home() {
             console.log(response);
             // alert("com envoyer")
         })
-        e.preventDefault(window.location.reload())
+        // e.preventDefault(window.location.reload())
     };
 
     //Affchage des commentaires
@@ -60,7 +60,7 @@ function Home() {
     // suppresion du message
     const DeleteCom = (Id) => {
         Axios.delete(`http://localhost:3000/api/home/com/${Id}`);
-        Id.preventDefault(window.location.reload());
+        // Id.preventDefault(window.location.reload());
     };
 
     // Modification du commentaire 
