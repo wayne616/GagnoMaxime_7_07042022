@@ -30,7 +30,6 @@ exports.login = (req, res, next) => {
   const email = req.body.UserEmail;
   const password = req.body.UserPassword;
 
-  
   Connection.query(
   `SELECT * FROM user WHERE Email = ? `, 
   [email], 

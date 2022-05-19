@@ -47,6 +47,7 @@ function Connexion() {
         }).then((response) =>{
             console.log(response.data.token);
             localStorage.setItem("token", response.data.token)
+            localStorage.setItem("user_id", response.data.userId)
             history.push("/home");
             alert("utilisateur connecté !!");
         });

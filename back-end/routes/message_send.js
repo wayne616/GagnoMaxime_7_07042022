@@ -5,12 +5,12 @@ const multer = require('../middleware/multer-config');
 const auth = require('../middleware/auth');
 
 const messageCtrl = require('../controllers/message_send');
-
+ 
 // router message
-router.get('/',auth, messageCtrl.getAllMessage);
+router.get('/', auth, messageCtrl.getAllMessage);
 router.post('/', auth, multer, messageCtrl.createMessage);
-router.delete('/:Id', auth, messageCtrl.deleteMessage);
-router.put('/:Id', auth, messageCtrl.UpadteMessage);
+router.delete('/:Id',auth, messageCtrl.deleteMessage);
+router.put('/:Id', auth, multer, messageCtrl.UpadteMessage);
 
 //router commentaire
 router.get('/com', messageCtrl.getAllCom);

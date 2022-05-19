@@ -3,7 +3,6 @@ dotenv.config();
 
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
 
 const userRoutes = require('./routes/user');
 const messageRoutes = require('./routes/message_send');

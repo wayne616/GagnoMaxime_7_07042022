@@ -38,6 +38,9 @@ body{
     .Button{
       cursor: pointer;
     }
+    #img{
+      max-width: 20%;
+    }
     /* #txt_Modify{
       display: flex;
     } */
