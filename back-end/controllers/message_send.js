@@ -1,6 +1,6 @@
 const Connection = require("../config/DB.js");
 
-// création et insertion de nouveau message dans la bdd
+// création message 
 exports.createMessage = (req, res, next) => {
 
     const text = { text: req.body.text , img: null, user_id : req.body.user_id};
@@ -22,7 +22,7 @@ exports.createMessage = (req, res, next) => {
     );
 };
 
-// récuperation des messages dans la bdd
+// Affichage des messages
 exports.getAllMessage = (req, res, next) => {
     const sqlMessage = "SELECT Nom , Prenom , text, img , user_id ,message_send.Id FROM message_send INNER JOIN user ON message_send.user_id = user.Id";
 
@@ -32,87 +32,26 @@ exports.getAllMessage = (req, res, next) => {
 
 };
 
-// suppression du message de la bdd
+// suppression du message 
 exports.deleteMessage = (req, res, next) => {
-    // console.log(req.params);
-    const IdText = req.params.Id;
-    // console.log(IdText);
+    const text = req.params.Id;
+    const sqlMessagedelete = "DELETE FROM message_send WHERE Id = ? ";
+    const sqlMessageSelect = "SELECT Nom , Prenom , text, img , user_id ,message_send.Id FROM message_send INNER JOIN user ON message_send.user_id = user.id WHERE message_send.Id = ?";
 
-    const sqlMessageSelect = "SELECT user_id, message_send.Id FROM message_send INNER JOIN user ON message_send.user_id = user.Id";
-    // const sqlMessagedelete = "DELETE message_send WHERE Id = ? ";
+    Connection.query(sqlMessageSelect, [text], (error, results) => {
+        if (error) console.log(error);
 
-
-    Connection.query(sqlMessageSelect, [IdText], (error, results) => {
-
-        const message = results[0];
-        console.log(error);
-        console.log(message);
-        // const message = results[0];
-        // console.log(message);
-        // if (error) console.log(error);
-        // console.log(results);
-        //     if (message.userid !== req.auth.userId) {
-        //         console.log(error);
-        //     return res.status(401).json({message :"interdit"})
-        //    }
-        //  Connection.query(sqlMessagedelete, (error, results) => {
-        //      console.log(results);
-        //    if (error) console.log(error);
-       
-        // });
-
+        if (results[0].user_id !== req.auth.userId) {
+            return res.status(401).json({message :"interdit"})
+        }
+        Connection.query(sqlMessagedelete, [text],(error, results) => {
+           if (error) console.log(error);
+    });
     })
-
-    // Connection.query(`DELETE FROM message_send WHERE message_send.user_id = ${req.params.user_id}`, (error, result) => {
-    //     // console.log(error);
-    //     console.log(result);
-    //     // if (error) {
-    //     //     return res.status(401).json({message :"interdit"});
-    //     // }
-    //     return res.status(200).json(result);
-    // });
-
-    // const text = req.params.Id;
-    // const sqlMessageSelect = "SELECT * FROM message_send WHERE Id = ? ";
-    // // const sqlMessagedelete = "DELETE FROM message_send INNER JOIN user ON message_send.user_id = user.Id ";
-    // Connection.query(sqlMessageSelect, text, (error, results) => {
-    //     // console.log(text);
-    //     // console.log(error);
-    //     // console.log(results);
-
-    //     if (error) console.log(error);
-
-    //     if (text.userId !== req.auth.userId) {
-    //         console.log(req.auth.userId);
-    //         console.log(results);
-    //         return res.status(401).json({message :"interdit"})
-    //     }
-
-    // //     Connection.query(sqlMessagedelete, text, (error, results) => {
-    // //        if (error) console.log(error);
-    // // })
-    // });
-
-    
-
-    // const text = req.params.Id;
-    // const sqlMessagedelete = "DELETE FROM message_send WHERE Id = ? ";
-    // const sqlMessageSelect = "SELECT Nom , Prenom , text, img , user_id ,message_send.Id FROM message_send INNER JOIN user ON message_send.user_id = user.Id";
-
-    // Connection.query(sqlMessageSelect, [text], (error, results) => {
-    //     if (error) console.log(error);
-    //     console.log(results);
-    //     if (results[0].userid !== req.auth.userId) {
-    //         return res.status(401).json({message :"interdit"})
-    //     }
-    //     Connection.query(sqlMessagedelete, (error, results) => {
-    //        if (error) console.log(error);
-    // });
-    // })
     
 };
 
-// update du message envoyer dans la bdd
+// update du message 
 exports.UpadteMessage = (req, res, next) => {
     const MessageObject = req.file ?
     {
@@ -126,7 +65,7 @@ exports.UpadteMessage = (req, res, next) => {
         Connection.query(sqlMessageSelect, (error, results) => {
         if (error) console.log(error);
         console.log(results);
-        if (results[0].Id !== req.auth.userId) {
+        if (results[0].user_id !== req.auth.userId) {
             return res.status(401).json({message :"interdit"})
         }
     Connection.query(sqlMessageUpdate, [MessageObject.text, MessageObject.img], (error, results) => {
@@ -143,10 +82,18 @@ exports.UpadteMessage = (req, res, next) => {
 
 // création commentaire
 exports.createCom = (req, res, next) => {
-    const Com = { com: req.body.com };
+
+    const Com = {
+        Id : req.params.Id,
+        text: req.body.text, 
+        // user_id : req.body.user_id
+    };
+    console.log(Com);
 
     Connection.query(
-        "INSERT INTO commentaire_send SET ? ", Com, (error, results) => {
+        "INSERT INTO commentaire_send SET ? ", 
+        Com, 
+        (error, results) => {
             if (error) {
                 console.log(error);
                 res.json({ error });
@@ -158,22 +105,31 @@ exports.createCom = (req, res, next) => {
     );
 };
 
-// récuperation des commenatires dans la bdd
+// Affichage des commentaire
 exports.getAllCom = (req, res, next) => {
-    const sqlcommentaire = "SELECT * FROM commentaire_send ";
+    const sqlcommentaire = "SELECT * FROM commentaire_send WHERE Id = Id";
 
     Connection.query(sqlcommentaire, (error, results) => {
         res.send(results);
     });
 };
 
-// suppression du commentaire de la bdd
+// suppression du commentaire
 exports.deleteCom = (req, res, next) => {
     const com = req.params.Id;
     const sqlComdelete = "DELETE FROM commentaire_send WHERE Id = ? ";
+    const sqlComSelect = "SELECT Id , Com, user_id FROM commentaire_send INNER JOIN user ON commentaire_send.user_id = user.id WHERE commentire_send.Id = ? ";
 
-    Connection.query(sqlComdelete, com, (error, results) => {
-        //    if (error) console.log(error);
+    Connection.query(sqlComSelect, [com], (error, results) => {
+        if (error) console.log(error);
+
+        if (results[0].user_id !== req.auth.userId) {
+            
+            return res.status(401).json({message :"interdit"})
+        }
+        Connection.query(sqlComdelete, [com], (error, result) => {
+            if (error) console.log(error);
+        })
     });
 };
 

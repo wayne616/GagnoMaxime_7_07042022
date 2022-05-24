@@ -44,7 +44,6 @@ li.li_infos{
     align-items: center;
 }
 .infos_bdd{
-    border: 1px solid black;    
     margin: 1rem;
 }
 ul#ul_statut {

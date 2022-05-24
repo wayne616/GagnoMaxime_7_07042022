@@ -1,7 +1,21 @@
+import React from 'react';
+
 import logo from "../../assets/logo.png";
 import "../../styles/Header.css";
 
+import Axios from 'axios';
+
 function Header() {
+
+  const Logout = (e) => {
+    Axios.post("http://localhost:3000/api/logout")
+    .then((response) => {
+      console.log(response);
+      alert("utilisateur déconnecté")
+    })
+    // e.preventDefault(window.location.reload());
+  };
+
   return (
     <div>
       <div id="header">
@@ -9,7 +23,7 @@ function Header() {
         <img id="img_Logo" src={logo} alt="" />
       </nav>
       <div id="div_buttom_signout">
-          <button action="connexion" type="submit" id="buttom_signout">
+          <button action="connexion" type="submit" id="buttom_signout" onClick={Logout} >
             <i class="fas fa-sign-out-alt"></i>
           </button>
       </div>

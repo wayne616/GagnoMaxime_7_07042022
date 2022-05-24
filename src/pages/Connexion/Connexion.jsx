@@ -35,7 +35,8 @@ function Connexion() {
         }).then((response) =>{
             console.log(response);
             // history.push("/home");
-            alert("utilisateur créer !!");
+            alert("Utilisateur créer !!");
+            alert("Veuillez vous connecter svp !!")
         });
     };
 
@@ -45,11 +46,12 @@ function Connexion() {
             UserEmail: UserEmail, 
             UserPassword: UserPassword,
         }).then((response) =>{
+            console.log(response.data);
             console.log(response.data.token);
             localStorage.setItem("token", response.data.token)
             localStorage.setItem("user_id", response.data.userId)
             history.push("/home");
-            alert("utilisateur connecté !!");
+            alert("Utilisateur connecté !!");
         });
         
     };
