@@ -12,14 +12,14 @@ function Setting() {
   // messages affilié a l'user  
   const history = useHistory();
 
-  const DeletUser = (Id) => {
+  const DeletUser = (e) => {
     Axios.post(`http://localhost:3000/api/auth/deleteUser/${localStorage.user_id}`)
     .then((response) => {
       console.log(response);
       alert("utilisateur supprimer")
     })
     history.push("/");
-    // e.preventDefault(window.location.reload())
+    // e.preventDefault(window.localStorage.clear())
   };
 
   // Afficher les données de l'utilisateur
@@ -59,16 +59,17 @@ function Setting() {
       <section id="section_principal">
         <section id="setting">
           <div>
+            <h3>Modifier utilisateur</h3>
             <ul id="ul_setting" >
               <li className="li_setting">
                 Nom :<input name="" id="Nom" type="text" onChange={(Id)=> {setNewNom(Id.target.value)}}></input>
               </li>
               <li className="li_setting">
-                Prénom :<input name="" id="Prenom" type="text" onChange={(Id)=> {setNewPrenom(Id.target.value)}} ></input>
+                Prénom :<input name="" id="Prenom" type="text" onChange={(Id)=> {setNewPrenom(Id.target.value)}}></input>
               </li>
               <li className="li_setting">
-                Adresse email :
-                <input name="" id="Email" type="email" onChange={(Id)=> {setNewEmail(Id.target.value)}} ></input>
+                Email :
+                <input name="" id="Email" type="email" onChange={(Id)=> {setNewEmail(Id.target.value)}}></input>
               </li>
               <li className="li_setting">
                 <button onClick={Update}>Modifier compte</button>
@@ -93,7 +94,7 @@ function Setting() {
                   Prénom :<div className="infos_bdd">{val.Prenom}</div>
                 </li>
                 <li className="li_infos">
-                  Adresse-email :<div className="infos_bdd">{val.Email}</div>
+                  Email :<div className="infos_bdd">{val.Email}</div>
                 </li>
               </ul>
             </div>
@@ -126,8 +127,6 @@ function Setting() {
         })
         }
       </section>
-      <footer>
-      </footer>
     </div>
   );
 }

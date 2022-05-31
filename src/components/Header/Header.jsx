@@ -1,30 +1,38 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 
 import logo from "../../assets/logo.png";
 import "../../styles/Header.css";
+import "../../styles/Mobile.css";
 
-import Axios from 'axios';
+
+// import Axios from 'axios';
+
+
 
 function Header() {
 
+  const history = useHistory();
+
+  // Gestion buttom logout user
   const Logout = (e) => {
-    Axios.post("http://localhost:3000/api/logout")
-    .then((response) => {
-      console.log(response);
-      alert("utilisateur déconnecté")
-    })
-    // e.preventDefault(window.location.reload());
+    // Axios.post(`http://localhost:3000/api/auth/logout/${localStorage.user_id}`)
+    // .then((response) => {
+      alert("utilisateur déconnecté");
+      history.push("/");
+    // })
+    e.preventDefault(window.localStorage.clear())
   };
 
   return (
-    <div>
+    <div id="header_navbar">
       <div id="header">
       <nav id="nav_Logo">
         <img id="img_Logo" src={logo} alt="" />
       </nav>
       <div id="div_buttom_signout">
           <button action="connexion" type="submit" id="buttom_signout" onClick={Logout} >
-            <i class="fas fa-sign-out-alt"></i>
+            <i className="fas fa-sign-out-alt"></i>
           </button>
       </div>
       </div>

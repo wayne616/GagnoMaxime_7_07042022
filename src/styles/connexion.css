@@ -2,13 +2,12 @@ body {
     margin: 0;
     background-color: white;
   }
-  
+
   /* ------nav logo-------*/
-  nav#nav_Logo {
+  nav#nav_Logo_co {
     display: flex;
     justify-content: center;
   }
-  
   /* ------nav logo fin-------*/
   /* ------section box_connexion-------*/
   #box_connexion {
@@ -19,10 +18,18 @@ body {
   
   /* ------section box_connexion fin -------*/
   /* ------section login-------*/
+  section#section_Login {
+    padding-left: 15rem;
+  }
   #Block_Login {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgba(13, 89, 255, 0.644);
+    padding: 1rem ;
+    border: solid 1px rgb(255, 255, 255);
+    width: 50%;
+    box-shadow: 5px 5px 30px 9px #0D59FF;
   }
   
   #txt_Connexion {
@@ -47,14 +54,20 @@ body {
   
   /* ------section login fin-------*/
   /* ------section singup-------*/
-  section#section_Singup {
+  section#section_Signup {
     border-left: 2px solid black;
+    padding-left: 15rem;
   }
   
-  div#Block_Singup {
+  div#Block_Signup {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgba(13, 89, 255, 0.644);
+    padding: 1rem ;
+    border: solid 1px rgb(255, 255, 255);
+    width: 50%;
+    box-shadow: 5px 5px 30px 9px #0D59FF;
   }
   
   #txt_inscription {
@@ -68,12 +81,7 @@ body {
   }
   
   /* ------section singup fin-------*/
-  /* ------footer-------*/
-  /* footer {
-    border: solid 1px black;
-    margin: 50px;
-  } */
+ 
   
-  /* ------footer fin-------*/
   /*---------------Connexion.html fin---------------------*/
   

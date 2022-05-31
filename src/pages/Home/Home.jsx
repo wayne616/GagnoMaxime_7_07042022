@@ -3,20 +3,33 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 
 import '../../styles/Home.css';
+import '../../styles/Mobile.css'
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 
+
 function Home() {
+
+    // Affichage des messages
+    const [TextListReceived, setTextListReceived] = useState([]);
+    useEffect(() => {
+        Axios.get(`http://localhost:3000/api/home/${localStorage.user_id}`)
+            .then((response) => {
+                setTextListReceived(response.data);
+                console.log(response.data);
+            });
+    }, []);
 
     // Affichage des messages
     const [TextList, setTextList] = useState([]);
     useEffect(() => {
-        Axios.get("http://localhost:3000/api/home")
-        .then((response) => {
-           setTextList(response.data);
-           console.log(response.data);
-        });
+        Axios.get(`http://localhost:3000/api/home/user/${localStorage.user_id}`)
+            .then((response) => {
+                setTextList(response.data);
+                console.log(response.data);
+            });
+
     }, []);
 
     // suppression du message
@@ -31,117 +44,134 @@ function Home() {
 
     const Update = (Id) => {
         const formData = new FormData();
-            formData.append("text",newText)
-            formData.append("image",Img)
+        formData.append("text", newText)
+        formData.append("image", Img)
         Axios.put(`http://localhost:3000/api/home/${Id}`,
             formData
-        ).then((response) =>{
+        ).then((response) => {
             console.log(response);
             alert("message update")
         })
         setnewText("")
-        // Id.preventDefault(window.location.reload());
+        Id.preventDefault(window.location.reload());
     };
 
     // création des commentaires 
-    const [Com, setCom] = useState('');
+    // const [NewCom, setNewCom] = useState("");
 
-    const commentaire_Send = (e) => {
-        Axios.post(`http://localhost:3000/api/home/com/${localStorage.user_id}`, {
-            text : Com ,
-        }).then((response) =>{
-            console.log(response);
-            // alert("com envoyer")
-        })
-        // e.preventDefault(window.location.reload())
-    };
+    // const commentaire_Send = (Id) => {
+    //     Axios.post(`http://localhost:3000/api/home/com/${localStorage.user_id}`, {
+    //          text : NewCom, 
+    //     }).then((response) =>{
+    //         console.log(response);
+    //         setNewCom(response.data);
+    //         console.log(response.data);
+    //         // alert("com envoyer")
+    //     })
+    //     // e.preventDefault(window.location.reload())
+    // };
 
-    //Affchage des commentaires
-    const [ComList, setComList] = useState([]);
-    
-    useEffect(() => {
-        Axios.get(`http://localhost:3000/api/home/com`)
-        .then((response) => {
-           setComList(response.data);
-        });
-    }, []);
+    // //Affchage des commentaires
+    // const [ComList, setComList] = useState([]);
+
+    // useEffect(() => {
+    //     Axios.get(`http://localhost:3000/api/home/com`)
+    //     .then((response) => {
+    //        setComList(response.data);
+    //     });
+    // }, []);
 
     // suppression du commentaire
-    const DeleteCom = (Id) => {
-        Axios.delete(`http://localhost:3000/api/home/com/${localStorage.user_id}`)
-        .then((response) => {
-            console.log(response);
-            alert("utilisateur supprimer")
-          })
-        // Id.preventDefault(window.location.reload());
-    };
+    // const DeleteCom = (Id) => {
+    //     Axios.delete(`http://localhost:3000/api/home/com/${Id}`)
+    //     .then((response) => {
+    //         console.log(response);
+    //         alert("utilisateur supprimer")
+    //       })
+    //     // Id.preventDefault(window.location.reload());
+    // };
 
     // Modification du commentaire 
-    const [newCom, setNewCom] = useState("");
+    // const [Updatecom, setUpdateCom] = useState("");
 
-    const UpdateCom = (Id) => {
-        Axios.put(`http://localhost:3000/api/home/com/${Id}`, {
-            com: newCom,
-        });
-        setNewCom("")
-        // Id.preventDefault(window.location.reload());
-    };
-  return (
-<div>
-    <Header/>
-    <section id="Block_Actualité">
-        <div id="Block_Contenue">
-            {TextList.map((val) => {
-                return  <div id="actualiter_received">
-                    <div id="test">
-                <h3 id="UserName">{val.Prenom}</h3>
-                <img id="img" src={val.img} alt="" />
-                <p id="text_received">{val.text}</p>
-                {/* <p>{val.date}</p> */}
-                <button id="Delete" className="Button" onClick={ () => {Delete(val.Id)}}>Supprimer
-                    <i className="fa-solid fa-trash-can"></i>
-                </button>
-                <button id="Modify" className="Button" onClick={()=> {Update(val.Id)}}>
-                    <input type="text" id="" onChange={(e) => {setnewText(e.target.value)}} required placeholder="Modifier"/>
-                    {/* <input name='image' type="file" onChange={(e) => {setImg(e.target.files[0])}}/> */}
-                    <i className="fa-solid fa-pen-to-square"></i>
-                </button>
-                <button id="img_Modify">
-                    <input name='image' type="file" onChange={ (e) => {setImg(e.target.files[0])}} />
-                </button>
-                <button id="commentaire" className="Button" methode="POST" onClick={commentaire_Send}>
-                    <input type="text" id="com"  placeholder="commentaire" onChange={(e) => {setCom(e.target.value)}} required />
-                    <i className="fa-solid fa-comment-dots" ></i>
-                </button>
-                {/* <button onChange={(e) => {setImg(e.target.files[0])}}>
-                        <i classNameName="far fa-image icone"></i>
-                        <input name='image' type="file" />
-                    </button> */}
+    // const UpdateCom = (Id) => {
+    //     Id.preventDefault()
+    //     Axios.put(`http://localhost:3000/api/auth/home/com/${localStorage.user_id}`, {
+    //         text: Updatecom,
+    //     }).then((response) => {
+    //         console.log(response);
+    //         alert("Commentaire modifié ")
+    //       })
+    //     setNewCom("")
+    //     // Id.preventDefault(window.location.reload());
+    // };
+    return (
+        <div>
+            <Header />
+            <section id="Block_Actualité">
+                <div id="Block_Contenue">
+                    {TextListReceived.map((val) => {
+                        return <div id="actualiter_received">
+                            <div id="contenue">
+                                <h3 id="UserName">{val.Prenom} {val.Nom}</h3>
+                                <img id="img" src={val.img} alt="" />
+                                <p id="text_received">{val.text}</p>
+                            </div>
+                        </div>
+                    })
+                    }
+                    {TextList.map((val) => {
+                        return <div id="actualiter_Send">
+                            <div id="contenue">
+                                <h3 id="UserName">{val.Prenom} {val.Nom} </h3>                                
+                                <div id="block_item">
+                                    <ul id="menu">
+                                        <li><i className="fa-solid fa-bars"></i>
+                                            <ul id="block_menu">
+                                                <li>
+                                                    <form action="" method="DELETE" id="form_txt_rc">
+                                                        <button id="Delete" className="Button" onClick={() => { Delete(val.Id) }}>
+                                                            <i className="fa-solid fa-trash-can"></i> Supprimer
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                                <br />
+                                                <li>
+                                                    <form action="" method="PUT" id="form_txt_rc" >
+                                                        <button id="Modify" className="Button" onClick={() => { Update(val.Id) }}>
+                                                            {/* <input type="text" id=""  placeholder="Modifier" /> */}
+                                                            {/* <input name='image' type="file" onChange={(e) => {setImg(e.target.files[0])}}/> */}
+                                                            <i className="fa-solid fa-pen-to-square"></i>
+                                                        </button>
+                                                        <textarea name="text" id="txt_modify" onChange={(e) => { setnewText(e.target.value) }} placeholder=" Modifier moi !"></textarea>
+                                                    </form>
+                                                </li>
+                                                <br />
+                                                <li>
+                                                    <form action="" method="PUT" id="form_txt_rc">
+                                                        <button id="img_Modify" onClick={() => { Update(val.Id) }}>
+                                                            <i className="far fa-image icone"></i>
+                                                        </button>
+                                                        <input id="file" name='image' type="file" onChange={(e) => { setImg(e.target.files[0]) }} />
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                               
+                                <img id="img" src={val.img} alt="" />
+                                <p id="text_received">{val.text}</p>
 
+                            </div>
+                        </div>
+                    })
+                    }
                 </div>
-                {ComList.map((valCom) => {
-                return <div id="Com_received"> 
-                        <h3 id="name_com">{valCom.Prenom}</h3>
-                        <p id="com_txt">{valCom.text}</p>
-                        <button id="Delete" className="Button" onClick={ () => {DeleteCom(valCom.Id)} }>Supprimer
-                        <i className="fa-solid fa-trash-can"></i>
-                        </button>
-                        <button id="Modify" className="Button" onClick={()=> {UpdateCom(valCom.Id)}}>
-                            <input type="text" id="" onChange={(e) => {setNewCom(e.target.value)}} required placeholder="Modifier"></input>
-                            <i className="fa-solid fa-pen-to-square"></i>
-                        </button>
-                      </div>
-            })
-            }
-
-                </div>
-            })
-            }
+            </section>
+            <Footer />
         </div>
-    </section>
-    <Footer/>
-</div>
-  );
+    );
 }
 
 

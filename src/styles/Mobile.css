@@ -1,0 +1,43 @@
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    input{
+        border: solid 1px black;
+        margin: 1vh;
+    }
+    /* page Connexion  */
+    
+    nav#nav_Logo_co{
+        margin: -2rem;
+    }
+    #box_connexion {
+        grid-template:"a" "b";
+        gap: 5rem;
+    }
+    section#section_Signup {
+        border : none;
+        padding: 0;
+    }
+    section#section_Login {
+        padding: 0;
+    }
+    #Block_Login{
+        width: auto;
+    }
+    div#Block_Signup{
+        width: auto;
+    }
+    /* page Connexion fin */
+    /* page home  */
+    #actualiter_received{
+        width: 95%;
+    }
+    /* page home  */
+    /* components footer  */
+    form#form_txt{
+        display: block ; 
+    }
+    #text{
+        width: 100%;
+    }
+    /* components footer fin  */
+
+}
