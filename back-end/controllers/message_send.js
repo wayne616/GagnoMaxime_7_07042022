@@ -26,7 +26,7 @@ exports.createMessage = (req, res, next) => {
 
 // Affichage les messages des autres users 
 exports.getAllMessage = (req, res, next) => {
-    const sqlMessage = `SELECT Nom, Prenom, text, img, user_id, message_send.Id FROM message_send INNER JOIN user ON message_send.user_id  = user.Id ORDER BY Id `;
+    const sqlMessage = `SELECT Nom, Prenom, text, img, user_id, date, message_send.Id FROM message_send INNER JOIN user ON message_send.user_id  = user.Id ORDER BY Id `;
     const user_id = req.params.Id;
     
     Connection.query( sqlMessage, user_id, (error, results) => {

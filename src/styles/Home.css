@@ -8,6 +8,7 @@ a {
   text-align: center;
   min-height: 100vh;
   background-color: rgba(13, 89, 255, 0.644);
+  margin-bottom: 4rem;
 }
 
 div#Block_Contenue{
