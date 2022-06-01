@@ -1,13 +1,16 @@
 const express = require('express');
+
 const router = express.Router();
+
 const userCtrl = require('../controllers/user');
+
 const auth = require('../middleware/auth');
 
 //router user 
-router.post('/signup', userCtrl.signup);
-router.post('/login', userCtrl.login);
 
-// router.post('/logout/:Id', auth,userCtrl.logout);
+router.post('/signup', userCtrl.signup);
+
+router.post('/login', userCtrl.login);
 
 router.post('/deleteUser/:Id',auth, userCtrl.deleteUser);
 

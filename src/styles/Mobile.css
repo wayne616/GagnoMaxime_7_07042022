@@ -1,16 +1,14 @@
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     input{
         border: solid 1px black;
-        margin: 1vh;
+        width: 90%;
+        /* margin: 1vh; */
     }
     /* page Connexion  */
-    
-    nav#nav_Logo_co{
-        margin: -2rem;
-    }
     #box_connexion {
         grid-template:"a" "b";
         gap: 5rem;
+        width: 100%;
     }
     section#section_Signup {
         border : none;
@@ -25,19 +23,58 @@
     div#Block_Signup{
         width: auto;
     }
-    /* page Connexion fin */
+    /* page Connexion fin --------------------*/
+
     /* page home  */
     #actualiter_received{
         width: 95%;
     }
-    /* page home  */
+    #menu{
+        padding-left: 0;
+        width: 100%;
+    }
+    #block_menu{
+        padding-left: 0;
+    }
+    ul#block_menu {
+        display: grid;
+        grid-template-columns: repeat(2,13rem);
+        grid-auto-rows: 3rem;
+    }
+    button#Delete {
+        width: 100%;
+    }
+    li#item3 {
+        grid-row: 2;
+        grid-column: 1 /-1;
+    }
+    /* page home fin -------------------- */
+
     /* components footer  */
-    form#form_txt{
-        display: block ; 
+    #form_txt {
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+    #btn{
+        flex-direction: column;
+        width: 40%;
     }
     #text{
         width: 100%;
     }
-    /* components footer fin  */
+    .btt_footer{
+        width: 100%;
+    }
+    /* components footer fin -------------------- */
+
+    /* page setting*/
+    #section_principal {
+    flex-direction: column-reverse;
+    }
+    section.setting_user {
+       margin-bottom: 4rem;
+    }
+    /* page setting fin -------------------- */
+
 
 }

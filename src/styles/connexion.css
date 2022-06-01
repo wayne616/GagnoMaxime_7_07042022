@@ -2,7 +2,9 @@ body {
     margin: 0;
     background-color: white;
   }
-
+#txt_h2 {
+    border-bottom: 2px solid #000000;
+  }
   /* ------nav logo-------*/
   nav#nav_Logo_co {
     display: flex;
@@ -15,7 +17,6 @@ body {
     align-items: center;
     grid-template: "a b ";
   }
-  
   /* ------section box_connexion fin -------*/
   /* ------section login-------*/
   section#section_Login {
@@ -31,34 +32,19 @@ body {
     width: 50%;
     box-shadow: 5px 5px 30px 9px #0D59FF;
   }
-  
-  #txt_Connexion {
-    border-bottom: 2px solid #000000;
-  }
-  
   form#form_connexion {
     display: flex;
     flex-direction: column;
   }
-  
-  .form-input {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1rem;
-  }
-  
   input {
     border-radius: 3rem;
   }
-  
   /* ------section login fin-------*/
   /* ------section singup-------*/
   section#section_Signup {
     border-left: 2px solid black;
     padding-left: 15rem;
   }
-  
   div#Block_Signup {
     display: flex;
     flex-direction: column;
@@ -69,11 +55,6 @@ body {
     width: 50%;
     box-shadow: 5px 5px 30px 9px #0D59FF;
   }
-  
-  #txt_inscription {
-    border-bottom: 2px solid #000000;
-  }
-  
   form#form_inscription {
     display: flex;
     flex-direction: column;

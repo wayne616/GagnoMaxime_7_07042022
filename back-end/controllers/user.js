@@ -1,5 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const fs = require('fs');
+
 const Connection = require("../config/DB.js");
 
 //création user hash password 
@@ -63,53 +65,50 @@ exports.login = (req, res, next) => {
   );
 };
 
-// Déconnection user 
-
-// exports.logout = (req, res, next) => {
-
-//   const sqlUserSelect = `SELECT * FROM user WHERE Id = ${req.params.Id}`;
-//   const logout = `SELECT GROUP_CONCAT(CONCAT('KILL ', ${req.params.Id} ,';') SEPARATOR ' ') FROM information_schema.processlist WHERE user <> 'system user'`;
-
-//   Connection.query(sqlUserSelect, (error, result) => {
-//     console.log(result);
-//     if (error) {
-//       console.log(error);
-//       res.json({ error });
-//     }if (result[0].Id !== req.auth.userId) {
-//       return res.status(401).json({ message: "interdit" });
-//     }
-  
-//   Connection.query(logout, (error, result) => {
-//     console.log(result);
-//     if (error) {
-//       console.log(error);
-//       res.json({ error });
-//     }
-//       res.status(201).json({ message: "utilisateur déconnecté " });
-//   });
-// });
-// };
-
-// Suppression user connnecté
-
 exports.deleteUser = (req, res, next) => {
+  const user = req.params.Id;
+
   const sqlUserSelect = `SELECT * FROM user WHERE Id = ${req.params.Id}`; 
   const sqlUserDelete = `DELETE FROM user WHERE Id = ${req.params.Id}`;
+  const sqlMessagedelete = `DELETE FROM message_send WHERE user_id = ${req.params.Id}`;
+  const sqlMessageSelect = `SELECT Nom , Prenom , text, img, user_id ,message_send.Id FROM message_send INNER JOIN user WHERE message_send.user_id = user.Id`;
 
-  Connection.query(sqlUserSelect, (error, result) => {
+  Connection.query(sqlMessageSelect, [user], (error, results) => {
+    console.log(results);
     if (error) console.log(error);
-    if (result[0].Id !== req.auth.userId) {
-      return res.status(401).json({ message: "interdit" });
+
+    let filename;
+
+    if(results[0].img){
+        filename = results[0].img.split('/images/')[1]
     }
-    Connection.query(sqlUserDelete, (error, result) => {
-      if (error) {
-        res.json({ error });
-      } else {
-        res.json({ message: "user supprimé de la bdd !!" });
+        
+    Connection.query(sqlMessagedelete, [user],(error, results) => {
+      console.log(results);
+      if (error) console.log(error);
+    
+      if(filename) {
+      fs.unlink(`images/${filename}`, () => { });
       }
+
+      Connection.query(sqlUserSelect, (error, result) => {
+        console.log(result);
+      if (error) console.log(error);
+      if (result[0].Id !== req.auth.userId) {
+        return res.status(401).json({ message: "interdit" });
+      }
+        Connection.query(sqlUserDelete, (error, result) => {
+        if (error) {
+          res.json({ error });
+        } else {
+          res.json({ message: "user supprimé de la bdd !!" });
+          }
+      });
     });
   });
+});
 };
+
 
 // Update user connecté 
 
@@ -153,8 +152,6 @@ exports.getOneUser = (req, res, next) => {
   });
 };
 
-
-      // if (req.auth.Admin === 0) {
-      //   return res.status(401).json({ message: "interdit" });
-      // }
-
+// if (req.auth.Admin === 0) {
+//   return res.status(401).json({ message: "interdit" });
+// }

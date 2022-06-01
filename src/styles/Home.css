@@ -3,11 +3,10 @@ a {
   color: black;
   cursor: pointer;
 }
-/*---------------index.html---------------------*/
 /*---------------section actualité ---------------------*/
 #Block_Actualité {
   text-align: center;
-  height: 250vh;
+  min-height: 100vh;
   background-color: rgba(13, 89, 255, 0.644);
 }
 
@@ -59,7 +58,6 @@ textarea#txt_modify {
 
 #img {
   max-width: 70%;
-  /* grid-column: 1 / -1; */
 }
 
 #file{
@@ -68,62 +66,20 @@ textarea#txt_modify {
   padding: 0.5rem;
   background-color: white ;
 }
-
 /*---------------section actualité fin---------------------*/
-/*---------------index.html fin---------------------*/
-#menu { 
-	display:block; 
-	color: rgb(0, 0, 0); 	
-  text-decoration: none;
+ul#menu li {
+  list-style: none;
 }
-#menu > li,
-#menu > li li {
-  z-index: 3;
-	position: relative;
-	display:inline-block;
-	padding: 6px 15px;
-	background-color: #777;
-	background-image: linear-gradient(#aaa, #888 50%, #777 50%,#999);
-}
-#menu > li li { background: transparent none;}
-#menu > li li:hover { background:#eee;}
-#menu > li:first-child {
-	border-right: 1px solid #777;
-	border-radius: 8px 0 0 8px;
-}
-#menu > li + li {
-	border-left: 1px solid #aaa;
-	border-right: 1px solid #777;
-}
-#menu > li:last-child {
-	border-right: 0;
-	border-left: 1px solid #aaa;
-	border-radius: 0 8px 8px 0 ;
-}
-#menu > li:hover {
-	background-color: #999;
-	background-image: linear-gradient(#ccc, #aaa 50%, #999 50%,#bbb);
-}
-#menu ul {
-  z-index: 3;
-	position: absolute;
-	top: 2em; left: -5em;
-	max-height:0em;	
-	margin: 0; padding: 0;
-	background-color: #ddd;
-	background-image: linear-gradient(#fff,#ddd);
-	overflow: hidden;
-	transition: 1s max-height 0.3s ;
-	border-radius: 0 0 8px 8px;
-}
-#menu > li:hover ul {
-	max-height: 15em;
-}
-div#contenue {
+ul#block_menu {
   display: flex;
   align-items: center;
-  flex-direction: column
+  justify-content: space-around;
+  padding-left: 0;
 }
 div#block_item {
-  margin-left: -3rem;
+  display: flex;
+  justify-content: center;
+}
+ul#menu {
+  padding-left: 0;
 }

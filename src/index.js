@@ -6,10 +6,8 @@ import Connexion from './pages/Connexion/Connexion';
 
 import Home from './pages/Home/Home';
 
-
 import Setting from './pages/Setting/Setting';
 
-import Error from './components/Error/Error';
 import axios from 'axios';
  
 axios.defaults.headers.common.Authorization = "Bearer " + localStorage.token
@@ -26,9 +24,6 @@ ReactDOM.render(
         </Route>
         <Route path="/Setting">
           <Setting />
-        </Route>
-        <Route path="/Error">
-          <Error />
         </Route>
       </Switch>
     </Router>

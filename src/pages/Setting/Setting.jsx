@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 
 import Header from "../../components/Header/Header";
+
+import '../../styles/Mobile.css'
 import "../../styles/Setting.css";
 
 import Axios from 'axios';
@@ -9,7 +11,6 @@ import Axios from 'axios';
 function Setting() {
 
   // Buttom Suppression de l'user de la base de donner et les 
-  // messages affilié a l'user  
   const history = useHistory();
 
   const DeletUser = (e) => {
@@ -19,7 +20,6 @@ function Setting() {
       alert("utilisateur supprimer")
     })
     history.push("/");
-    // e.preventDefault(window.localStorage.clear())
   };
 
   // Afficher les données de l'utilisateur
@@ -34,7 +34,6 @@ function Setting() {
   }, []);
 
   //Update de l'User 
-  // const [UpdateUser, setUpdateUser] = useState("");
   const [NewNom,setNewNom] = useState("");
   const [NewPrenom,setNewPrenom] = useState("");
   const [NewEmail, setNewEmail] = useState("");
@@ -50,14 +49,14 @@ function Setting() {
     setNewNom("")
     setNewPrenom("")
     setNewEmail("")
-    // Id.preventDefault();
+    Id.preventDefault();
   };
 
   return (
     <div>
       <Header />
       <section id="section_principal">
-        <section id="setting">
+        <section id="setting" className="setting_user">
           <div>
             <h3>Modifier utilisateur</h3>
             <ul id="ul_setting" >
@@ -81,9 +80,7 @@ function Setting() {
           </div>
         </section>
         {UserInfo.map((val) => {
-        return <div>
-          <section id="statut">
-          <div>
+        return <section id="statut" className="setting_user">
             <div id="infos">
               <h3>Infos compte</h3>
               <ul id="ul_infos">
@@ -98,32 +95,7 @@ function Setting() {
                 </li>
               </ul>
             </div>
-            {/* <div id="statut">
-              <h3>statut</h3>
-              <ul id="ul_statut">
-                <li>
-                  <button>
-                    Connecté
-                    <i className="far fa-check-circle"></i>
-                  </button>
-                </li>
-                <li>
-                  <button>
-                    Hors ligne
-                    <i className="fas fa-circle"></i>
-                  </button>
-                </li>
-                <li>
-                  <button>
-                    Do not disturb
-                    <i className="fas fa-ban"></i>
-                  </button>
-                </li>
-              </ul>
-            </div> */}
-          </div>
         </section>
-        </div>
         })
         }
       </section>

@@ -1,64 +1,44 @@
 /* ------régalge-------*/
+h3 {
+    margin-left: 1rem;
+}
 /* ------section principal-------*/
 
 section#section_principal {
-    display: grid;
-    grid-template-columns: 50% auto;
-    border-bottom: solid 1px black;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3rem;
 }
 
 /* ------section principale fin -------*/
 /* ------section setting-------*/
-#setting {
-    border-right: 1px solid black;
-}
 
 ul#ul_setting {
     list-style: none;
     display: flex;
     flex-direction: column;
+    padding: 0.5rem;
 }
-
 li.li_setting {
     padding-top: 1rem;
     display: flex;
     align-items: center;
 }
-
-/* ------section setting fin-------*/
-/* ------section statut-------*/
-#statut {
-    padding-left: 5px;
+section.setting_user {
+    border: solid 1px rgb(255, 255, 255);
+    background-color: rgba(13, 89, 255, 0.644);
+    box-shadow: 5px 5px 30px 9px #0D59FF;
 }
-
 ul#ul_infos {
     list-style: none;
+    padding: 0.5rem;
 }
-
 li.li_infos {
     display: flex;
     align-items: center;
 }
-
 .infos_bdd {
     margin: 1rem;
+    border-bottom: solid 1px white;
 }
-
-ul#ul_statut {
-    list-style: none;
-}
-
 /* ------section statut fin-------*/
-/* ------footer-------*/
-#Groupomania_Logo_footer {
-    display: flex;
-    justify-content: center;
-    border-top: solid 1px black;
-}
-
-#logo_footer {
-    margin-top: -4rem;
-}
-
-/* ------footer fin-------*/
-/* ------réglage fin -------*/

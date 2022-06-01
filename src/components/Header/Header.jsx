@@ -16,12 +16,9 @@ function Header() {
 
   // Gestion buttom logout user
   const Logout = (e) => {
-    // Axios.post(`http://localhost:3000/api/auth/logout/${localStorage.user_id}`)
-    // .then((response) => {
       alert("utilisateur déconnecté");
       history.push("/");
-    // })
-    e.preventDefault(window.localStorage.clear())
+      e.preventDefault(window.localStorage.clear())
   };
 
   return (
@@ -37,7 +34,6 @@ function Header() {
       </div>
       </div>
       <nav id="navbar">
-    
         <ul id="nav_liste">
           <a href="Home">
             <li>

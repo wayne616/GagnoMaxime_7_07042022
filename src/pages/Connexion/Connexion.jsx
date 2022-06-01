@@ -12,11 +12,8 @@ import '../../styles/connexion.css';
 
 
 function Connexion() {
-    // const [loginStatus, setLoginStatus] = useState("");
 
     const history = useHistory();
-
-    // Axios.defaults.withCredentials = true;
 
     //Enregistrement user 
     const [nom, setNom] = useState('');
@@ -33,7 +30,6 @@ function Connexion() {
             password: password,
         }).then((response) => {
             console.log(response);
-            // history.push("/home");
             alert("Utilisateur créer !!");
             alert("Veuillez vous connecter svp !!")
         });
@@ -69,7 +65,7 @@ function Connexion() {
             <section id="box_connexion">
                 <section id="section_Login">
                     <div id="Block_Login">
-                        <h2 id="txt_Connexion">Connexion</h2>
+                        <h2 id="txt_h2">Connexion</h2>
                         <form action="" method="" id="form_connexion" >
                             <input type="text" name="email" id="email_login" placeholder="Email..." autoComplete="off" onChange={(e) => { setUserEmail(e.target.value) }} required />
                             <br />
@@ -84,7 +80,7 @@ function Connexion() {
                 </section>
                 <section id="section_Signup">
                     <div id="Block_Signup">
-                        <h2 id="txt_inscription">Inscription</h2>
+                        <h2 id="txt_h2">Inscription</h2>
                         <form action="" method="post" id="form_inscription">
                             <input type="text" name="nom" id="Nom" placeholder="Nom..." onChange={(e) => { setNom(e.target.value) }} required />
                             <br />
