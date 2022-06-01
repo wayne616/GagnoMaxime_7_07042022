@@ -4,7 +4,7 @@ Prérequis
 -Node JS
 -Xampp
 
-Une foix les prérequis installer importer le dossier "groupomania.sql" via à phpMyadmin
+Une foix les prérequis installaient importer le dossier "groupomania.Sql" via à Phpmyadmin
 
 le dossier une fois impoté lancer le server back-end en premier avec nodemon server vous devrait accèdes a "http://localhost:3000"
 
