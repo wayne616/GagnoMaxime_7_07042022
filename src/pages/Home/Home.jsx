@@ -93,7 +93,7 @@ const Home = () => {
                                                     </form>
                                                 
                                                     <form method="DELETE" id="form_txt_rc" className="Btn_Delete">
-                                                        <button id="Delete" className="Button" onClick={() => { Delete(val.user_id, val.Admin) }}>
+                                                        <button id="Delete" className="Button" onClick={() => { Delete(val.Id, val.Admin) }}>
                                                             <i className="fa-solid fa-trash-can"></i>
                                                             Supprimer
                                                         </button>
