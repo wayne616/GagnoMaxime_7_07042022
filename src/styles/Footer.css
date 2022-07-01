@@ -10,15 +10,42 @@ form#form_txt {
   flex-direction: row;
   justify-content: space-evenly;
 }
-  #text {
-    width: 80%;
-    border-radius: 1rem;
-    text-align: center;
-  }
-  #btn {
-    display: flex;
-  }
-  button {
-    border-radius: 1rem;
-    padding: 0.5rem;
-  }
+#text {
+  width: 100%;
+  border-radius: 1rem;
+  text-align: center;
+  border: solid 1px #d14f4f;
+}
+#btn {
+  display: flex;
+}
+.btt_footer {
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.button {
+  outline: none;
+  height: 60px;
+  text-align: center;
+  width: 150px;
+  border-radius: 40px;
+  background: #fff;
+  border: 2px solid #d14f4f;
+  color: #d14f4f;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.input-file {
+  display: none;
+}
+.button:hover {
+  color: white;
+  background: #d14f4f;
+}
+.button:active {
+  letter-spacing: 2px;
+}

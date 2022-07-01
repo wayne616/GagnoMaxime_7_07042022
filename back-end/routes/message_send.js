@@ -12,6 +12,8 @@ router.post('/', auth, multer, messageCtrl.createMessage);
 
 router.get('/:Id', messageCtrl.getAllMessage);
 
+// router.get('/user/:Id', auth, messageCtrl.getOneMessageUser);
+
 router.delete('/:Id',auth, messageCtrl.deleteMessage);
 
 router.put('/:Id', auth, multer, messageCtrl.UpadteMessage);

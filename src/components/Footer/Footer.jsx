@@ -13,6 +13,15 @@ function Footer() {
 
 
     const message_Send = (e) => {
+
+        // const regExText = (value) => {
+        //     return /^[A-Za-z]{2,20}$/.test(value);
+        //   };
+
+        // if(!regExText (text)){
+        //     alert("Le message ne peut pas être vide !!!")
+        //     return
+        // }
         const formData = new FormData();
         formData.append("text", text)
         formData.append("image", Img)
@@ -32,13 +41,21 @@ function Footer() {
         <footer>
             <div id="Block_txt">
                     <form action="" method="post" id="form_txt">
-                        <input name="text" id="text" onChange={(e) => { setText(e.target.value) }} required placeholder=" Quoi de neuf ?"></input>
+                    <label htmlFor="text" className="sr-only">Quoi de neuf</label>
+                        <input name="text" id="text" onChange={(e) => { setText(e.target.value) }} required placeholder=" Quoi de neuf ?"/>
                         <div id="btn">
-                            <button className="btt_footer">
-                                <i className="far fa-image icone"></i>
-                                <input name='image' type="file" onChange={(e) => { setImg(e.target.files[0]) }} />
-                            </button>
-                            <button className="btt_footer" metode="POST" onClick={message_Send} required ><i className="far fa-paper-plane icone"></i>Envoyer</button>
+
+                            <div className="wrap"> 
+                                <button className="btt_footer button">
+                                    <i className="far fa-image icone"></i>
+                                    <label htmlFor="file" className="label">Photo</label>
+                                    <input name='image'className="input-file" type="file" id="file" onChange={(e) => { setImg(e.target.files[0]) }} />
+                                </button>
+                            </div>
+
+                            <div className="wrap">      
+                                <button className="btt_footer button" metode="POST" onClick={message_Send} required ><i className="far fa-paper-plane icone"></i>Envoyer</button>
+                            </div>
                         </div>
                     </form>
             </div>

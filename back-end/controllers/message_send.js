@@ -13,6 +13,7 @@ exports.createMessage = (req, res, next) => {
         "INSERT INTO message_send SET ? ",
         text ,
         (error, results) => {
+            console.log(results);
             if (error) {
                 console.log(error);
                 res.json({ error });
@@ -26,13 +27,13 @@ exports.createMessage = (req, res, next) => {
 
 // Affichage les messages des autres users 
 exports.getAllMessage = (req, res, next) => {
-    const sqlMessage = `SELECT Nom, Prenom, text, img, user_id, date, message_send.Id FROM message_send INNER JOIN user ON message_send.user_id  = user.Id ORDER BY Id `;
-    const user_id = req.params.Id;
+    const sqlMessage = `SELECT Nom, Prenom, text, img, user_id, date, message_send.Id FROM message_send INNER JOIN user ON message_send.user_id = user.Id  ORDER BY Id `;
     
-    Connection.query( sqlMessage, user_id, (error, results) => {
+    Connection.query( sqlMessage, (error, results) => {
         if (error) {
             res.json({ error });
         } 
+        console.log(results);
         res.send(results);
     });
 
@@ -45,9 +46,13 @@ exports.deleteMessage = (req, res, next) => {
     const sqlMessageSelect = "SELECT Nom , Prenom , text, img, user_id ,message_send.Id FROM message_send INNER JOIN user ON message_send.user_id = user.id WHERE message_send.Id = ?";
     
     Connection.query(sqlMessageSelect, [text], (error, results) => {
-        if (error) console.log(error);
-
+        if (error){
+            res.json({ error });
+        }
+        console.log(results);
+        console.log(text);
         if (results[0].user_id !== req.auth.userId) {
+            console.log(results[0].user_id);
             return res.status(401).json({message :"interdit"})
         }
         let filename;
@@ -55,15 +60,15 @@ exports.deleteMessage = (req, res, next) => {
         if(results[0].img){
             filename = results[0].img.split('/images/')[1]
         }
-        
+
         Connection.query(sqlMessagedelete, [text],(error, results) => {
-            console.log(results);
-            if (error) console.log(error);
-          
-        if(filename) {
-        fs.unlink(`images/${filename}`, () => { });
-        }
-        });
+            if (error) {
+                res.json({ error });
+            }          
+            if(filename) {
+                fs.unlink(`images/${filename}`, () => { });
+            }
+            });
     });
     
 };
@@ -80,17 +85,17 @@ exports.UpadteMessage = (req, res, next) => {
     const sqlMessageUpdate = `UPDATE message_send SET text = ? , img = ? WHERE Id = ${req.params.Id}`;
 
         Connection.query(sqlMessageSelect, (error, results) => {
-        if (error) console.log(error);
+        if (error) {
+            res.json({ error });
+        }
         console.log(results);
         if (results[0].user_id !== req.auth.userId) {
             return res.status(401).json({message :"interdit"})
         }
     Connection.query(sqlMessageUpdate, [MessageObject.text, MessageObject.img], (error, results) => {
         if (error) {
-            // console.log(error);
             res.json({ error });
         } else {
-            // console.log(results);
             res.json({ message: "Message modifié dans la bdd !!" });
         }
 });

@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const fs = require('fs');
+// const fs = require('fs');
 
 const Connection = require("../config/DB.js");
 
@@ -18,10 +18,8 @@ exports.signup = (req, res, next) => {
       };
       Connection.query("INSERT INTO user SET ?", user, (error, result) => {
         if (error) {
-          console.log(error);
           res.json({ error });
         } else {
-          // console.log(result);
           res.json({ message: "utilisateur créer !! " });
         }
       });
@@ -58,42 +56,22 @@ exports.login = (req, res, next) => {
           });
         })
         .catch((error) => {
-          console.log(error);
           res.status(500).json({ error });
         });
     }
   );
 };
 
-exports.deleteUser = (req, res, next) => {
-  const user = req.params.Id;
+// delete user 
 
+exports.deleteUser = (req, res, next) => {
   const sqlUserSelect = `SELECT * FROM user WHERE Id = ${req.params.Id}`; 
   const sqlUserDelete = `DELETE FROM user WHERE Id = ${req.params.Id}`;
-  const sqlMessagedelete = `DELETE FROM message_send WHERE user_id = ${req.params.Id}`;
-  const sqlMessageSelect = `SELECT Nom , Prenom , text, img, user_id ,message_send.Id FROM message_send INNER JOIN user WHERE message_send.user_id = user.Id`;
-
-  Connection.query(sqlMessageSelect, [user], (error, results) => {
-    console.log(results);
-    if (error) console.log(error);
-
-    let filename;
-
-    if(results[0].img){
-        filename = results[0].img.split('/images/')[1]
-    }
-        
-    Connection.query(sqlMessagedelete, [user],(error, results) => {
-      console.log(results);
-      if (error) console.log(error);
-    
-      if(filename) {
-      fs.unlink(`images/${filename}`, () => { });
+ 
+    Connection.query(sqlUserSelect, (error, result) => {
+      if (error){
+        res.json({ error });
       }
-
-      Connection.query(sqlUserSelect, (error, result) => {
-        console.log(result);
-      if (error) console.log(error);
       if (result[0].Id !== req.auth.userId) {
         return res.status(401).json({ message: "interdit" });
       }
@@ -105,10 +83,7 @@ exports.deleteUser = (req, res, next) => {
           }
       });
     });
-  });
-});
-};
-
+  };
 
 // Update user connecté 
 
@@ -137,21 +112,3 @@ exports.updateUser = (req, res, next) => {
     );
   });
 };
-
-// Affichage données user connecté 
-
-exports.getOneUser = (req, res, next) => {
-  const sqlGetUser = `SELECT * FROM user WHERE Id = ${req.params.Id}`;
-
-  Connection.query(sqlGetUser, (error, result) => {
-    if (error) {
-      res.status(404).json({ error });
-      throw error;
-    }
-    res.status(200).json(result);
-  });
-};
-
-// if (req.auth.Admin === 0) {
-//   return res.status(401).json({ message: "interdit" });
-// }

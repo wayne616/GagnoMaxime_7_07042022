@@ -1,9 +1,6 @@
 body {
+    font-family: 'Raleway', Arial, sans-serif;
     margin: 0;
-    background-color: white;
-  }
-#txt_h2 {
-    border-bottom: 2px solid #000000;
   }
   /* ------nav logo-------*/
   nav#nav_Logo_co {
@@ -26,18 +23,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(13, 89, 255, 0.644);
     padding: 1rem ;
     border: solid 1px rgb(255, 255, 255);
+    background-color: rgba(13, 89, 255, 0.644);
+    border-radius: 1rem;
     width: 50%;
     box-shadow: 5px 5px 30px 9px #0D59FF;
   }
   form#form_connexion {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
-  input {
+  .input_co {
     border-radius: 3rem;
+    border: solid 1px black;
   }
   /* ------section login fin-------*/
   /* ------section singup-------*/
@@ -52,6 +52,7 @@ body {
     background-color: rgba(13, 89, 255, 0.644);
     padding: 1rem ;
     border: solid 1px rgb(255, 255, 255);
+    border-radius: 1rem;
     width: 50%;
     box-shadow: 5px 5px 30px 9px #0D59FF;
   }
@@ -59,10 +60,17 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
   }
   
   /* ------section singup fin-------*/
- 
-  
+  .sr-only{
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+ }
   /*---------------Connexion.html fin---------------------*/
   
