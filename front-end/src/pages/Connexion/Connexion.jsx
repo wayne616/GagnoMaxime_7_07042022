@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-// import React, { useRef, useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 
 import Axios from 'axios';
 
 import logo from "../../assets/logo.png";
 import '../../styles/connexion.css';
-
-// const User_Regex = /^[a-zA-Z] [a-zA-z0-9-_]{3,23}$/;
-// const Pwd_Regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
 
 function Connexion() {
 

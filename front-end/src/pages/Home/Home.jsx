@@ -12,6 +12,7 @@ const Home = () => {
 
     let Admin = JSON.parse(localStorage.getItem(("Admin")));
     let User_id = JSON.parse(localStorage.getItem(("user_id")));
+
     console.log(Admin);
     console.log(User_id);
 
@@ -74,7 +75,7 @@ const Home = () => {
                                 </div>
 
                                 <div id="block_menu">
-                                            {User_id ?
+                                            {User_id && Admin ?
                                                 <nav id='nav'>
                                                     <form method="PUT" id="form_txt_rc" className="Btn_Update_file">
                                                             <button className="Button" id="img_Modify" onClick={() => { Update(val.Id) }}>
