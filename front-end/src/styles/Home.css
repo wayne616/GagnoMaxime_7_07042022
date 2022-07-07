@@ -18,11 +18,13 @@ div#actualiter_received {
 #Time{
   font-weight: 100;
   margin: 0;
+  grid-area: 2;
 }
-div#block_info {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+div#info {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 100%;
+  justify-items: center;
 }
 div#Block_Contenue {
   display: flex;

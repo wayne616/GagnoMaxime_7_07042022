@@ -8,32 +8,32 @@ exports.createMessage = (req, res, next) => {
     if (req.file) {
         text.img = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     }
-    console.log(text);
+    // console.log(text);
     Connection.query(
         "INSERT INTO message_send SET ? ",
         text ,
         (error, results) => {
-            console.log(results);
+            // console.log(results);
             if (error) {
-                console.log(error);
+                // console.log(error);
                 res.json({ error });
             } else {
-                console.log(results);
+                // console.log(results);
                 res.json({ message: "Message envoyé dans la bdd !!" });
             }
         }
     );
 };
 
-// Affichage les messages des autres users 
+// Affichage des messages 
 exports.getAllMessage = (req, res, next) => {
-    const sqlMessage = `SELECT Nom, Prenom, text, img, user_id, date, message_send.Id FROM message_send INNER JOIN user ON message_send.user_id = user.Id  ORDER BY Id `;
+    const sqlMessage = `SELECT Nom, Prenom, text, img, user_id, date, message_send.Id, message_send.admin FROM message_send INNER JOIN user ON message_send.user_id = user.Id  ORDER BY Id `;
     
     Connection.query( sqlMessage, (error, results) => {
         if (error) {
             res.json({ error });
         } 
-        console.log(results);
+        // console.log(results);
         res.send(results);
     });
 
@@ -42,7 +42,7 @@ exports.getAllMessage = (req, res, next) => {
 // suppression du message 
 exports.deleteMessage = (req, res, next) => {
     const text = req.params.Id;
-    const sqlMessagedelete = "DELETE FROM message_send WHERE Id = ? ";
+    const sqlMessagedelete = "DELETE FROM message_send WHERE Id = ?";
     const sqlMessageSelect = "SELECT Nom , Prenom , text, img, user_id ,message_send.Id FROM message_send INNER JOIN user ON message_send.user_id = user.id WHERE message_send.Id = ?";
     
     Connection.query(sqlMessageSelect, [text], (error, results) => {
@@ -88,7 +88,7 @@ exports.UpadteMessage = (req, res, next) => {
         if (error) {
             res.json({ error });
         }
-        console.log(results);
+        // console.log(results);
         if (results[0].user_id !== req.auth.userId) {
             return res.status(401).json({message :"interdit"})
         }
@@ -100,4 +100,43 @@ exports.UpadteMessage = (req, res, next) => {
         }
 });
 })
+};
+
+// suppression du message 
+exports.deleteMessageAdmin = (req, res, next) => {
+    const TextUser = req.params.Id;
+    const Admin = req.params.Admin;
+
+    // const sqlMessagedelete = "DELETE FROM message_send WHERE Id = ? ";
+    const sqlMessageSelect = "SELECT Nom , Prenom , text, img, user_id, message_send.admin ,message_send.Id FROM message_send INNER JOIN user ON message_send.user_id = user.id WHERE message_send.Id = ?";
+
+    Connection.query(sqlMessageSelect, [TextUser , Admin], (error, results) => {
+        if (error){
+         res.json({ error });
+        }
+        console.log(results, "ici res");
+        console.log(TextUser,"ici Id Message");
+        console.log(Admin,"ici Admin");
+
+        if (results[0].Admin !== req.auth.Admin) {
+         console.log(results[0].Admin, "test");
+         return res.status(401).json({message :"interdit"})
+        }
+        let filename;
+
+        if(results[0].img){
+            filename = results[0].img.split('/images/')[1]
+        }
+
+        Connection.query(sqlMessagedelete, [text],(error, results) => {
+            if (error) {
+                res.json({ error });
+            }          
+            console.log(results);
+            if(filename) {
+                fs.unlink(`images/${filename}`, () => { });
+            }
+            });
+    });
+    
 };

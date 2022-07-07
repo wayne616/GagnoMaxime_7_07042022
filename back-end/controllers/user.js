@@ -92,7 +92,7 @@ exports.updateUser = (req, res, next) => {
   const sqlUpdateUser = `UPDATE user SET Nom = ?, Prenom = ?, Email = ? WHERE Id = ${req.params.Id}`;
 
   Connection.query(sqluserSelect, (error, result) => {
-    if (error) console.log(error);
+    if (error);
 
     if (result[0].Id !== req.auth.userId) {
       return res.status(401).json({ message: "interdit" });
@@ -103,7 +103,7 @@ exports.updateUser = (req, res, next) => {
       [req.body.Nom, req.body.Prenom, req.body.Email],
       (error, result) => {
         if (error) {
-          console.log(error);
+          // console.log(error);
           res.json({ error });
         } else {
           res.json({ message: "user modifié dans la bdd !!" });

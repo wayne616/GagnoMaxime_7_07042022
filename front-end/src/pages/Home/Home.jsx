@@ -29,11 +29,20 @@ const Home = () => {
     const Delete = (Id) => {
         Axios.delete(`http://localhost:3000/api/home/${Id}`,
         ).then((response) => {
-            console.log(response);
+            // console.log(response);
             alert("message supprimer")
         }) 
     };
 
+    // suppression message Admin
+    const DeleteAdmin = (Id) => {
+        Axios.delete(`http://localhost:3000/api/home/${Id}/${localStorage.Admin}`,
+        ).then((response) => {
+            console.log(response);
+            alert("message supprimer")
+        }) 
+    };
+    
     // Modification du message 
     const [newText, setnewText] = useState("");
     const [Img, setImg] = useState(null);
@@ -45,7 +54,7 @@ const Home = () => {
         Axios.put(`http://localhost:3000/api/home/${Id}`,
             formData
         ).then((response) => {
-            console.log(response);
+            // console.log(response);
             alert("message update")
         })
         setnewText("")
@@ -61,9 +70,19 @@ const Home = () => {
                             <div id="actualiter_received">
 
                                 <div id="block_info">
-                                    <div>
+                                    <div id="info">
                                         <h3 id="UserName">{val.Prenom} {val.Nom}</h3>
                                         <p id="Time">{val.date}</p>
+                                        {Admin ? 
+                                            <div>
+                                                <form method="DELETE" id="form_txt_rc" className="Btn_Delete">
+                                                    <button id="Delete" className="Button" onClick={() => { DeleteAdmin(val.Id) }}>
+                                                        <i className="fa-solid fa-trash-can"></i>
+                                                        Supprimer
+                                                    </button>
+                                                </form>
+                                            </div> : null 
+                                        }
                                     </div>
                                 </div>
 
@@ -75,7 +94,7 @@ const Home = () => {
                                 </div>
 
                                 <div id="block_menu">
-                                            {User_id && Admin ?
+                                            {User_id ?
                                                 <nav id='nav'>
                                                     <form method="PUT" id="form_txt_rc" className="Btn_Update_file">
                                                             <button className="Button" id="img_Modify" onClick={() => { Update(val.Id) }}>
