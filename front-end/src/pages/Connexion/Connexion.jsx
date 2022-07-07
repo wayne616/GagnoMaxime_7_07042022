@@ -24,14 +24,17 @@ function Connexion() {
 
         const regExemail = (value) => {
             return /^[\w-\.]+@([\w-]+\.)+[\w_]{2,4}$/.test(value);
-          };
+          }
+
           if(!regExemail(email)){
               alert("Email invalid")
               return
           }
+
           const regExNomPrenomPassword = (value) => {
             return /^[A-Za-z]{3,20}$/.test(value);
           };
+
         if(!regExNomPrenomPassword (nom, prenom, password)){
             alert("Nom, Prenom ,Password invalid")
             return
@@ -44,7 +47,6 @@ function Connexion() {
             email: email,
             password: password,
         }).then((response) => {
-            console.log(response);
             alert("Utilisateur créer !!");
             alert("Veuillez vous connecter svp !!")
         });

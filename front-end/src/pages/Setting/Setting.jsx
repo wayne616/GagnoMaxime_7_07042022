@@ -16,7 +16,6 @@ function Setting() {
   const DeletUser = (e) => {
     Axios.post(`http://localhost:3000/api/auth/deleteUser/${localStorage.user_id}`)
     .then((response) => {
-      console.log(response);
       alert("utilisateur supprimer")
     })
     history.push("/");
@@ -28,12 +27,13 @@ function Setting() {
   const [NewEmail, setNewEmail] = useState("");
 
 
-  const Update = (Id) => { 
+  const Update = (e, Id) => { 
+    e.preventDefault()
     Axios.put(`http://localhost:3000/api/auth/updateUser/${localStorage.user_id}`,
       {Nom : NewNom ,Prenom : NewPrenom , Email : NewEmail}
     ).then((response) => {
-      console.log(response);
       alert("utilisateur modifier")
+      window.location.reload()
     })
     setNewNom("")
     setNewPrenom("")
@@ -70,7 +70,7 @@ function Setting() {
               </li>
 
               <li className="li_setting">
-                <button className="btt_Setting" onClick={Update}>Modifier compte</button>
+                <button className="btt_Setting" onClick={(e) => {Update(e)}}>Modifier compte</button>
               </li>
 
               <li className="li_setting">

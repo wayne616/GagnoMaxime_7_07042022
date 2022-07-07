@@ -13,9 +13,6 @@ const Home = () => {
     let Admin = JSON.parse(localStorage.getItem(("Admin")));
     let User_id = JSON.parse(localStorage.getItem(("user_id")));
 
-    console.log(Admin);
-    console.log(User_id);
-
     // Affichage des messages
     const [TextListReceived, setTextListReceived] = useState([]);
     useEffect(() => {
@@ -29,8 +26,8 @@ const Home = () => {
     const Delete = (Id) => {
         Axios.delete(`http://localhost:3000/api/home/${Id}`,
         ).then((response) => {
-            // console.log(response);
             alert("message supprimer")
+            window.location.reload()
         }) 
     };
 
@@ -38,8 +35,8 @@ const Home = () => {
     const DeleteAdmin = (Id) => {
         Axios.delete(`http://localhost:3000/api/home/${Id}/${localStorage.Admin}`,
         ).then((response) => {
-            console.log(response);
             alert("message supprimer")
+            window.location.reload()
         }) 
     };
     
@@ -47,15 +44,17 @@ const Home = () => {
     const [newText, setnewText] = useState("");
     const [Img, setImg] = useState(null);
 
-    const Update = (Id) => {
+    const Update = (e, Id) => {
+        e.preventDefault()
+
         const formData = new FormData();
         formData.append("text", newText)
         formData.append("image", Img)
         Axios.put(`http://localhost:3000/api/home/${Id}`,
             formData
         ).then((response) => {
-            // console.log(response);
             alert("message update")
+            window.location.reload()
         })
         setnewText("")
     };
@@ -94,10 +93,10 @@ const Home = () => {
                                 </div>
 
                                 <div id="block_menu">
-                                            {User_id ?
+                                            {User_id === val.user_id ?
                                                 <nav id='nav'>
                                                     <form method="PUT" id="form_txt_rc" className="Btn_Update_file">
-                                                            <button className="Button" id="img_Modify" onClick={() => { Update(val.Id) }}>
+                                                            <button className="Button" id="img_Modify" onClick={(e) => { Update(e, val.Id) }}>
                                                                 <i className="far fa-image icone"></i> 
                                                             </button>
                                                                 <label htmlFor={"file" + index} className="label sr-only">Photo</label>
@@ -105,7 +104,7 @@ const Home = () => {
                                                     </form>
 
                                                     <form method="PUT" id="form_txt_rc" className="Btn_Update">
-                                                        <button id="Modify" className="Button" onClick={() => { Update(val.Id) }}>
+                                                        <button id="Modify" className="Button" onClick={(e) => { Update(e, val.Id) }}>
                                                             <i className="fa-solid fa-pen-to-square"></i>
                                                         </button>
                                                             <label htmlFor={"txt_modify" + index} className="sr-only">Modifier moi</label>
@@ -113,7 +112,7 @@ const Home = () => {
                                                     </form>
                                                 
                                                     <form method="DELETE" id="form_txt_rc" className="Btn_Delete">
-                                                        <button id="Delete" className="Button" onClick={() => { Delete(val.Id, val.Admin) }}>
+                                                        <button id="Delete" className="Button" onClick={() => { Delete(val.Id) }}>
                                                             <i className="fa-solid fa-trash-can"></i>
                                                             Supprimer
                                                         </button>

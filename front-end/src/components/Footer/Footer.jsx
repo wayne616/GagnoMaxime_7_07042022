@@ -14,6 +14,8 @@ function Footer() {
 
     const message_Send = (e) => {
 
+        e.preventDefault()
+
         // const regExText = (value) => {
         //     return /^[A-Za-z]{2,20}$/.test(value);
         //   };
@@ -29,10 +31,10 @@ function Footer() {
         Axios.post("http://localhost:3000/api/home/",
             formData
         ).then((response) => {
-            console.log(response);
+
             alert("message envoyer")
+            window.location.reload()
         })
-        e.preventDefault(window.location.reload())
     };
 
 

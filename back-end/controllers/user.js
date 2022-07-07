@@ -103,7 +103,6 @@ exports.updateUser = (req, res, next) => {
       [req.body.Nom, req.body.Prenom, req.body.Email],
       (error, result) => {
         if (error) {
-          // console.log(error);
           res.json({ error });
         } else {
           res.json({ message: "user modifié dans la bdd !!" });
