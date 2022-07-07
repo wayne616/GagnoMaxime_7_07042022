@@ -1,13 +1,18 @@
-Prérequis
--VScode
--Dépôt github 
--Node JS
--Xampp
+Prérequis 
 
-Une fois les prérequis installaient importer le dossier "groupomania.Sql" via à Phpmyadmin
+-Installer sur ca machine au préalable 
+	-Nodejs(https://nodejs.org/en/download/)
+	-Xampp(https://www.apachefriends.org/fr/download.html)
+	-VsCode(https://code.visualstudio.com/download)	
+	-lienGitHub(https://github.com/wayne616/GagnoMaxime_7_07042022.git)
 
-une fois le dossier importé lancer le server back-end en premier avec nodemon server vous devrait accèdes a "http://localhost:3000"
-
-pour la suite des opérations lancer le serveur front-end en utilisant "npm start" vous devrait accèdes à "http://localhost:3001"
-
-si le site ce lance c'est que tout c'est bien passer alors amuser vous !! 😁😁
+Lancer Vscode et installer le fichier github
+Lancer un terminale cd front-end 
+Lancer un second terminale cd back-end
+Installer les nodemodules sur le front-end et le back-end (npm i download)
+Lancer Xampp lancer les serveurs Mysql et Apache 
+Click sur Admin (Mysql)
+Crée une new basse de donées nom: groupomania
+Importer le document groupomania.sql du fichier github sur phpmyadmin dans la base de données groupomania crée précédemment
+Retourner sur VScode lancer les serveurs front-end et back-end avec npm start
+Cela va vous rediriger vers la page de connection crées un utilisateur 
