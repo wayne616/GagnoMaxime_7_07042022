@@ -2,8 +2,11 @@ Prérequis
 
 -Installer sur ca machine au préalable 
 	-Nodejs(https://nodejs.org/en/download/)
+	
 	-Xampp(https://www.apachefriends.org/fr/download.html)
+	
 	-VsCode(https://code.visualstudio.com/download)	
+	
 	-lienGitHub(https://github.com/wayne616/GagnoMaxime_7_07042022.git)
 
 Lancer Vscode et installer le fichier github
