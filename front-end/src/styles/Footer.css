@@ -14,7 +14,7 @@ form#form_txt {
   width: 100%;
   border-radius: 1rem;
   text-align: center;
-  border: solid 1px #d14f4f;
+  border: solid 1px #A22A2A;
 }
 #btn {
   display: flex;
@@ -30,8 +30,8 @@ form#form_txt {
   width: 150px;
   border-radius: 40px;
   background: #fff;
-  border: 2px solid #d14f4f;
-  color: #d14f4f;
+  border: 2px solid #A22A2A;
+  color: #A22A2A;
   letter-spacing: 1px;
   text-shadow: 0;
   font-size: 12px;
@@ -44,7 +44,7 @@ form#form_txt {
 }
 .button:hover {
   color: white;
-  background: #d14f4f;
+  background: #A22A2A;
 }
 .button:active {
   letter-spacing: 2px;

@@ -93,7 +93,7 @@ exports.UpadteMessage = (req, res, next) => {
 })
 };
 
-// suppression du message 
+// suppression du message admin
 exports.deleteMessageAdmin = (req, res, next) => {
     const TextUser = req.params.Id;
     const admin = req.params.Admin;

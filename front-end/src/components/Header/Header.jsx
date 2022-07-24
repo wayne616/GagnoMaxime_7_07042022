@@ -41,6 +41,7 @@ function Header() {
           </nav>
           <button
             value="Logout"
+            aria-label="Logout"
             action="connexion"
             type="submit"
             id="buttom_signout"

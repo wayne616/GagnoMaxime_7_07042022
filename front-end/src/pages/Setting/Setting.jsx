@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useHistory } from "react-router-dom";
 
 import Header from "../../components/Header/Header";
@@ -41,6 +41,17 @@ function Setting() {
     Id.preventDefault();
   };
 
+    // Afficher les données de l'utilisateur
+    const [UserInfo, setUserInfo] = useState([]);
+
+    useEffect(() => {
+        Axios.get(`http://localhost:3000/api/auth/getOneUser/${localStorage.user_id}`)
+        .then((response) => {
+          setUserInfo(response.data);
+          console.log(response.data);
+        });
+    }, []);
+
   return (
     <div>
       <Header />
@@ -81,6 +92,25 @@ function Setting() {
 
           </div>
         </section>
+        {UserInfo.map((val) => {
+        return <section id="statut" className="setting_user">
+            <div id="infos">
+              <h1>Infos compte</h1>
+              <ul id="ul_infos">
+                <li className="li_infos">
+                  Nom : <div className="infos_bdd">{val.Nom}</div>
+                </li>
+                <li className="li_infos">
+                  Prénom : <div className="infos_bdd">{val.Prenom}</div>
+                </li>
+                <li className="li_infos">
+                  Email : <div className="infos_bdd">{val.Email}</div>
+                </li>
+              </ul>
+            </div>
+        </section>
+        })
+        }
       </section>
     </div>
   );

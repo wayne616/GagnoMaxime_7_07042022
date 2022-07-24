@@ -111,3 +111,15 @@ exports.updateUser = (req, res, next) => {
     );
   });
 };
+
+exports.getOneUser = (req, res, next) => {
+  const sqlGetUser = `SELECT * FROM user WHERE Id = ${req.params.Id}`;
+
+  Connection.query(sqlGetUser, (error, result) => {
+    if (error) {
+      res.status(404).json({ error });
+      throw error;
+    }
+    res.status(200).json(result);
+  });
+};

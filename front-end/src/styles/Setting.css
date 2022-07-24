@@ -4,7 +4,6 @@ h3 {
 }
 #H1{
     text-align: center;
-   border-bottom: 1px solid black;
 }
 /* ------section principal-------*/
 
@@ -57,5 +56,23 @@ section.setting_user {
 }
 .btt_Setting:active {
     letter-spacing: 2px;
+}
+ul#ul_infos {
+    list-style: none;
+    padding: 0.5rem;
+}
+li.li_infos {
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 15px 5px #A0A0A0;
+    border: solid 1px #A0A0A0;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+.input_setting{
+    border-radius: 1rem;
+    margin-left: 0.5rem;
+    border: solid 1px black; 
 }
 /* ------section statut fin-------*/

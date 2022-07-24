@@ -75,12 +75,12 @@ div#contenue {
   letter-spacing: 2px;
 }
 #Delete{
-  border: 2px solid #d14f4f;
-  color: #d14f4f;
+  border: 2px solid #A22A2A;
+  color: #A22A2A;
 }
 #Delete:hover {
   color: white;
-  background:  #d14f4f;
+  background:  #A22A2A;
 }
 .input_home{
   border-radius: 1rem;

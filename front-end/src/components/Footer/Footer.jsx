@@ -15,15 +15,7 @@ function Footer() {
     const message_Send = (e) => {
 
         e.preventDefault()
-
-        // const regExText = (value) => {
-        //     return /^[A-Za-z]{2,20}$/.test(value);
-        //   };
-
-        // if(!regExText (text)){
-        //     alert("Le message ne peut pas être vide !!!")
-        //     return
-        // }
+        
         const formData = new FormData();
         formData.append("text", text)
         formData.append("image", Img)

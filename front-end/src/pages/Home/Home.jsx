@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 
 import Axios from 'axios';
 
@@ -70,7 +71,7 @@ const Home = () => {
 
                                 <div id="block_info">
                                     <div id="info">
-                                        <h3 id="UserName">{val.Prenom} {val.Nom}</h3>
+                                        <h1 id="UserName">{val.Prenom} {val.Nom}</h1>
                                         <p id="Time">{val.date}</p>
                                         {Admin ? 
                                             <div>
@@ -96,7 +97,7 @@ const Home = () => {
                                             {User_id === val.user_id ?
                                                 <nav id='nav'>
                                                     <form method="PUT" id="form_txt_rc" className="Btn_Update_file">
-                                                            <button className="Button" id="img_Modify" onClick={(e) => { Update(e, val.Id) }}>
+                                                            <button aria-label={"file" + index} className="Button" id="img_Modify" onClick={(e) => { Update(e, val.Id) }}>
                                                                 <i className="far fa-image icone"></i> 
                                                             </button>
                                                                 <label htmlFor={"file" + index} className="label sr-only">Photo</label>
@@ -104,7 +105,7 @@ const Home = () => {
                                                     </form>
 
                                                     <form method="PUT" id="form_txt_rc" className="Btn_Update">
-                                                        <button id="Modify" className="Button" onClick={(e) => { Update(e, val.Id) }}>
+                                                        <button  aria-label={"txt_modify" + index}id="Modify" className="Button" onClick={(e) => { Update(e, val.Id) }}>
                                                             <i className="fa-solid fa-pen-to-square"></i>
                                                         </button>
                                                             <label htmlFor={"txt_modify" + index} className="sr-only">Modifier moi</label>
