@@ -22,10 +22,10 @@ Lancer Xampp lancer les serveurs Mysql et Apache
 
 Click sur Admin (Mysql)
 
-Crée une new basse de donées nom: groupomania
+Crée une new base de donées dans phpmyadmin
 
-Importer le document groupomania.sql du fichier github sur phpmyadmin dans la base de données groupomania crée précédemment
+Importer le document groupomania.sql du fichier github sur phpmyadmin dans la new base de données crée précédemment
 
-Retourner sur VScode lancer les serveurs front-end et back-end avec npm start
+Retourner sur VScode lancer les serveurs front-end et back-end avec npm start et nodemon 
 
 Cela va vous rediriger vers la page de connection crées un utilisateur 
