@@ -65,10 +65,10 @@ li.li_infos {
     display: flex;
     align-items: center;
     border-radius: 1rem;
-    box-shadow: 5px 5px 15px 5px #A0A0A0;
     border: solid 1px #A0A0A0;
     margin-bottom: 1rem;
     padding: 0.5rem;
+    background-color: #a0a0a090;
 }
 .input_setting{
     border-radius: 1rem;

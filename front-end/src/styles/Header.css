@@ -10,11 +10,6 @@ div#header {
   align-items: center;
   justify-content: space-between;
 }
-img#img_Logo {
-  width: 20%;
-  padding-left: 5rem;
-}
-
 /* css et annimation button */
 #nav{
   display: flex;

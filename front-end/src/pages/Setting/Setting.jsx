@@ -95,8 +95,8 @@ function Setting() {
         {UserInfo.map((val) => {
         return <section id="statut" className="setting_user">
             <div id="infos">
-              <h1>Infos compte</h1>
-              <ul id="ul_infos">
+              <h1 id='H1'>Infos compte</h1>
+              <ul id="ul_setting">
                 <li className="li_infos">
                   Nom : <div className="infos_bdd">{val.Nom}</div>
                 </li>

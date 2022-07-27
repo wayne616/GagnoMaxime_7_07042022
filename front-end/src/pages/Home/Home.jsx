@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
 
+import moment from 'moment';
+import 'moment/locale/fr'
 import Axios from 'axios';
 
+import '../../styles/Mobile.css';
 import '../../styles/Home.css';
-import '../../styles/Mobile.css'
+
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+
 
 const Home = () => {
 
     let Admin = JSON.parse(localStorage.getItem(("Admin")));
     let User_id = JSON.parse(localStorage.getItem(("user_id")));
+
+    moment.locale('fr');
+
 
     // Affichage des messages
     const [TextListReceived, setTextListReceived] = useState([]);
@@ -72,8 +78,17 @@ const Home = () => {
                                 <div id="block_info">
                                     <div id="info">
                                         <h1 id="UserName">{val.Prenom} {val.Nom}</h1>
-                                        <p id="Time">{val.date}</p>
-                                        {Admin ? 
+                                        <p id="Time">Il y a {moment(val.date).startOf('secondes').fromNow('fr')}</p>
+                                        {User_id === val.user_id ?
+                                            <div>
+                                                <form method="DELETE" id="form_txt_rc" className="Btn_Delete">
+                                                    <button id="Delete" className="Button" onClick={() => { Delete(val.Id) }}>
+                                                        <i className="fa-solid fa-trash-can"></i>
+                                                        Supprimer
+                                                    </button>
+                                                </form>
+                                            </div> : null ||
+                                            Admin ?
                                             <div>
                                                 <form method="DELETE" id="form_txt_rc" className="Btn_Delete">
                                                     <button id="Delete" className="Button" onClick={() => { DeleteAdmin(val.Id) }}>
@@ -81,7 +96,7 @@ const Home = () => {
                                                         Supprimer
                                                     </button>
                                                 </form>
-                                            </div> : null 
+                                            </div> : null
                                         }
                                     </div>
                                 </div>
@@ -95,7 +110,7 @@ const Home = () => {
 
                                 <div id="block_menu">
                                             {User_id === val.user_id ?
-                                                <nav id='nav'>
+                                                <nav id='nav_home'>
                                                     <form method="PUT" id="form_txt_rc" className="Btn_Update_file">
                                                             <button aria-label={"file" + index} className="Button" id="img_Modify" onClick={(e) => { Update(e, val.Id) }}>
                                                                 <i className="far fa-image icone"></i> 
@@ -112,12 +127,6 @@ const Home = () => {
                                                             <input name="text" className='input_home' id={"txt_modify" + index} onChange={(e) => { setnewText(e.target.value) }} placeholder=" Modifier moi !" />
                                                     </form>
                                                 
-                                                    <form method="DELETE" id="form_txt_rc" className="Btn_Delete">
-                                                        <button id="Delete" className="Button" onClick={() => { Delete(val.Id) }}>
-                                                            <i className="fa-solid fa-trash-can"></i>
-                                                            Supprimer
-                                                        </button>
-                                                    </form>
                                                 </nav> : null
                                             }
                                     </div>

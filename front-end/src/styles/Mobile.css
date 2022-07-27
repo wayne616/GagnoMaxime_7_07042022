@@ -21,18 +21,20 @@
     /* page Connexion fin --------------------*/
 
     /* header */
+    div#header_navbar {
+        width: fit-content;
+    }
     div#header {
         flex-direction: column;
     }
     #nav {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex-wrap: nowrap;
+    align-items: center;
+    flex-direction: row;
     }
     img#img_Logo {
-        width: 90%;
-        margin-top: 3rem;
+        /* width:; */
+        padding-left: 0;
     }
     /* header fin */
 
@@ -41,17 +43,11 @@
         font-size: 25px;
     }
     div#Block_Contenue {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
         margin-bottom: 6rem;
     }
-    div#actualiter_received {
+    /* div#actualiter_received {
         margin: 0;
-    }
-    div#contenue {
-        width: 100%;
-    }
+    } */
     div#actualiter_send{
         margin-left: 0;
     }
@@ -60,9 +56,6 @@
         flex-direction: column;
         align-items: center;
         margin-right: 0;
-    }
-    div#menu {
-        width: 90%;
     }
     #menu:focus ul {
         top: 25rem;
@@ -89,6 +82,9 @@
     /* page setting*/
     #section_principal {
     flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    width: 115%;
+    margin-left: 2.5rem;
     }
     section.setting_user {
        margin-bottom: 4rem;

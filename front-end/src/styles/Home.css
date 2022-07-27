@@ -10,7 +10,7 @@ div#actualiter_received {
   padding: 2rem;
   box-shadow: 5px 5px 15px 5px #7F7F7F;
   width: 500px;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 #UserName{
   margin: 0;
@@ -43,8 +43,6 @@ div#block_contenue {
   border-radius: 1rem;
 }
 div#contenue {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   margin-top: 5px;
 }
@@ -53,7 +51,6 @@ div#contenue {
 } */
 .Button{
   outline: none;
-  height: 30px;
   text-align: center;
   width: 100px;
   border-radius: 40px;
@@ -61,7 +58,6 @@ div#contenue {
   border: 2px solid rgb(34, 72, 242);
   color: rgb(34, 72, 242);
   letter-spacing: 1px;
-  text-shadow: 0;
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
@@ -89,12 +85,14 @@ div#contenue {
   color: rgb(34, 72, 242);
 
 }
-#nav{
-  display: flex;
-  overflow: hidden;
+#nav_home{
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 50% 50%;
   padding-top: 1rem;
+  /* justify-content: space-evenly; */
 }
 #form_txt_rc {
   display: flex;
-  width: 40%;
+  /* width: 50%; */
   }
