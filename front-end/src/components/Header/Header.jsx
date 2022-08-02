@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 
 import logo from "../../assets/logo.svg";
 import "../../styles/Header.css";
-import "../../styles/Mobile.css";
 
 // import Axios from 'axios';
 

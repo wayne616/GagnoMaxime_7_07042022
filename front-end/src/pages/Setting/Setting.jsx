@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 
 import Header from "../../components/Header/Header";
 
-import '../../styles/Mobile.css'
 import "../../styles/Setting.css";
 
 import Axios from 'axios';
@@ -21,14 +20,31 @@ function Setting() {
     history.push("/");
   };
 
-  //Update de l'User 
+  //Update de l'User
+
   const [NewNom,setNewNom] = useState("");
   const [NewPrenom,setNewPrenom] = useState("");
   const [NewEmail, setNewEmail] = useState("");
 
-
   const Update = (e, Id) => { 
     e.preventDefault()
+
+    const regExemail = (value) => {
+      return /^[\w-\.]+@([\w-]+\.)+[\w_]{2,4}$/.test(value);
+    };
+    if(!regExemail(NewEmail)){
+        alert("Email invalid")
+        return
+    }
+    const regExNomPrenom = (value) => {
+      return /^[A-Za-z]{3,20}$/.test(value);
+    };
+  
+  if(!regExNomPrenom(NewNom, NewPrenom)){
+      alert("Nom, Prenom invalid")
+      return
+  }
+
     Axios.put(`http://localhost:3000/api/auth/updateUser/${localStorage.user_id}`,
       {Nom : NewNom ,Prenom : NewPrenom , Email : NewEmail}
     ).then((response) => {

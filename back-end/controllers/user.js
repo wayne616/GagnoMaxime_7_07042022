@@ -15,6 +15,7 @@ exports.signup = (req, res, next) => {
         prenom: req.body.prenom,
         password: hash,
         email: req.body.email,
+        admin: 0,
       };
       Connection.query("INSERT INTO user SET ?", user, (error, result) => {
         if (error) {

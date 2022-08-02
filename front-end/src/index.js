@@ -8,6 +8,8 @@ import Home from './pages/Home/Home';
 
 import Setting from './pages/Setting/Setting';
 
+import "./styles/Mobile.css";
+
 import axios from 'axios';
  
 axios.defaults.headers.common.Authorization = "Bearer " + localStorage.token

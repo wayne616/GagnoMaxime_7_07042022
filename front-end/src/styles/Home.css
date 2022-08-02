@@ -19,10 +19,12 @@ div#actualiter_received {
   font-weight: 100;
   margin: 0;
   grid-area: 2;
+  font-size: 20px;
 }
 div#info {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: [first]50% [line2]50%;
+  grid-template-rows: [row-first]50% [row-line2]50%;
   width: 100%;
   justify-items: center;
 }
@@ -43,8 +45,12 @@ div#block_contenue {
   border-radius: 1rem;
 }
 div#contenue {
-  align-items: center;
   margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
 }
 /* #block_menu {
   font-size: 2rem;
@@ -84,15 +90,14 @@ div#contenue {
   border: 2px solid rgb(34, 72, 242);
   color: rgb(34, 72, 242);
 
-}
-#nav_home{
-  display: grid;
-  gap: 0.5rem;
-  grid-template-columns: 50% 50%;
+} 
+nav#nav_home {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
   padding-top: 1rem;
-  /* justify-content: space-evenly; */
 }
 #form_txt_rc {
   display: flex;
-  /* width: 50%; */
   }

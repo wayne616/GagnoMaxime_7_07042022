@@ -4,7 +4,6 @@ import moment from 'moment';
 import 'moment/locale/fr'
 import Axios from 'axios';
 
-import '../../styles/Mobile.css';
 import '../../styles/Home.css';
 
 
@@ -24,8 +23,8 @@ const Home = () => {
     const [TextListReceived, setTextListReceived] = useState([]);
     useEffect(() => {
         Axios.get(`http://localhost:3000/api/home/${localStorage.user_id}`)
-            .then((response) => {
-                setTextListReceived(response.data);
+            .then((res) => {
+                setTextListReceived(res.data);
             });
     }, []);
 
@@ -54,6 +53,14 @@ const Home = () => {
     const Update = (e, Id) => {
         e.preventDefault()
 
+        const regExMessage = (value) => {
+            return /^[a-zA-Z0-9\s-]{3,250}$/.test(value);
+          };
+        if(!regExMessage(newText)){
+            alert("Le message ne peut pas être vide !")
+            return
+        }       
+
         const formData = new FormData();
         formData.append("text", newText)
         formData.append("image", Img)
@@ -80,8 +87,8 @@ const Home = () => {
                                         <h1 id="UserName">{val.Prenom} {val.Nom}</h1>
                                         <p id="Time">Il y a {moment(val.date).startOf('secondes').fromNow('fr')}</p>
                                         {User_id === val.user_id ?
-                                            <div>
-                                                <form method="DELETE" id="form_txt_rc" className="Btn_Delete">
+                                            <div id="item">
+                                                <form id="form_txt_rc" className="Btn_Delete">
                                                     <button id="Delete" className="Button" onClick={() => { Delete(val.Id) }}>
                                                         <i className="fa-solid fa-trash-can"></i>
                                                         Supprimer
@@ -89,8 +96,8 @@ const Home = () => {
                                                 </form>
                                             </div> : null ||
                                             Admin ?
-                                            <div>
-                                                <form method="DELETE" id="form_txt_rc" className="Btn_Delete">
+                                            <div id="item">
+                                                <form id="form_txt_rc" className="Btn_Delete">
                                                     <button id="Delete" className="Button" onClick={() => { DeleteAdmin(val.Id) }}>
                                                         <i className="fa-solid fa-trash-can"></i>
                                                         Supprimer
@@ -120,9 +127,6 @@ const Home = () => {
                                                     </form>
 
                                                     <form method="PUT" id="form_txt_rc" className="Btn_Update">
-                                                        <button  aria-label={"txt_modify" + index}id="Modify" className="Button" onClick={(e) => { Update(e, val.Id) }}>
-                                                            <i className="fa-solid fa-pen-to-square"></i>
-                                                        </button>
                                                             <label htmlFor={"txt_modify" + index} className="sr-only">Modifier moi</label>
                                                             <input name="text" className='input_home' id={"txt_modify" + index} onChange={(e) => { setnewText(e.target.value) }} placeholder=" Modifier moi !" />
                                                     </form>

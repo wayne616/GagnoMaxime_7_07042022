@@ -41,10 +41,6 @@ CREATE TABLE `message_send` (
 --
 
 INSERT INTO `message_send` (`Id`, `text`, `img`, `date`, `user_id`, `admin`) VALUES
-(314, 'Hello World', NULL, '2022-07-07 10:18:33', 42, 1),
-(315, 'Hello World maxime admin', NULL, '2022-07-07 10:18:53', 39, 1),
-(316, 'Hi !!', NULL, '2022-07-07 10:19:05', 40, 1),
-(317, 'test 3', NULL, '2022-07-07 10:19:18', 41, 1);
 
 -- --------------------------------------------------------
 
@@ -67,9 +63,6 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`Id`, `Nom`, `Prenom`, `Password`, `Email`, `admin`) VALUES
 (39, 'Maxime', 'Gagno', '$2b$10$d65I72/nVo7zRMXTpw39hO6AMavp2f0mJZT7Wixs6gM2QgmqA86Qu', 'test@test.fr', 1),
-(40, 'aaaa', 'aaaa', '$2b$10$xnfLUaYyranRclJkif4CK.U3rLMf4WzGqk/WUx4967XVU1/.ZIJgm', 'test2@test2.fr', 0),
-(41, 'bbbbb', 'bbbbb', '$2b$10$cD5HLrZqT68B5hY3bsfg4urCCOvA431Ba/DUOGwgspep62JVubGs6', 'test3@test3.fr', 0),
-(42, 'cccc', 'cccc', '$2b$10$gX7Z.hYBtFk5g3wmj2jk2.arWK0qbTdpY8bKxkNeM4f0xL0aLqtEm', 'test4@test4.fr', 0);
 
 --
 -- Index pour les tables déchargées

@@ -4,6 +4,7 @@ footer{
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 2rem;
 }
 form#form_txt {
   display: flex;
@@ -20,20 +21,16 @@ form#form_txt {
   display: flex;
 }
 .btt_footer {
-  border-radius: 1rem;
   padding: 0.5rem;
 }
 .button {
   outline: none;
-  height: 60px;
   text-align: center;
-  width: 150px;
   border-radius: 40px;
   background: #fff;
   border: 2px solid #A22A2A;
   color: #A22A2A;
   letter-spacing: 1px;
-  text-shadow: 0;
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
