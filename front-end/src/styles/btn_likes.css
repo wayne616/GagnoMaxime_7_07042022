@@ -1,0 +1,22 @@
+#Block_items {
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+  }
+  .like-button {
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: solid 1px grey;
+  }
+  #btn_likes {
+    padding-right: 1rem;
+  }
+  #btn_likes :hover {
+    background-color: rgba(0, 0, 255, 0.6);
+    color: white;
+  }
+  #btn_dislikes :hover {
+    background-color: rgba(255, 0, 0, 0.6);
+    color: white;
+  }

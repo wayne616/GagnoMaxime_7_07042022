@@ -18,4 +18,6 @@ router.delete('/:Id/:Admin', auth, messageCtrl.deleteMessageAdmin);
 
 router.put('/:Id', auth, multer, messageCtrl.UpadteMessage);
 
+router.post('/home/likes/:Id'), messageCtrl.createLikes;
+
 module.exports = router;

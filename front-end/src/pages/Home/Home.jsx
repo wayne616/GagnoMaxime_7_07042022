@@ -9,6 +9,7 @@ import '../../styles/Home.css';
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import Likes from '../../components/btn_likes/btn_likes';
 
 
 const Home = () => {
@@ -60,7 +61,10 @@ const Home = () => {
             alert("Le message ne peut pas être vide !")
             return
         }       
-
+        if(!Img) {
+            alert("L'image ne peut pas être vide !")
+            return
+        }
         const formData = new FormData();
         formData.append("text", newText)
         formData.append("image", Img)
@@ -134,8 +138,7 @@ const Home = () => {
                                                 </nav> : null
                                             }
                                     </div>
-
-
+                                <Likes />
                             </div>
                         </div>
                     })
