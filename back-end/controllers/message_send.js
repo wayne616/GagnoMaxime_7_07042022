@@ -23,7 +23,7 @@ exports.createMessage = (req, res, next) => {
 
 // Affichage des messages 
 exports.getAllMessage = (req, res, next) => {
-    const sqlMessage = `SELECT Nom, Prenom, text, img, user_id, date, likes, dislikes, message_send.Id, message_send.admin FROM message_send INNER JOIN user ON message_send.user_id = user.Id  ORDER BY Id `;
+    const sqlMessage = `SELECT Nom, Prenom, text, img, user_id, date, message_send.Id, message_send.admin FROM message_send INNER JOIN user ON message_send.user_id = user.Id  ORDER BY Id `;
     
     Connection.query( sqlMessage, (error, results) => {
         if (error) {
@@ -126,27 +126,33 @@ exports.deleteMessageAdmin = (req, res, next) => {
     });
     
 };
-  
-// modification (Update/Delete) des likes et des dislikes ----- rajouter authentification 
-  exports.createLikes = (req, res, next) => {
-    const likesAdd = `UPDATE message_send SET likes = ? , dislikes = ? WHERE Id = ?`;
-    const sqlMessageSelect = `SELECT * FROM message_send WHERE Id = ?`;
-  
-    Connection.query(sqlMessageSelect, (error, results) => {
-        console.log(results);
-      if (error) {
-        results.json({ error });
-      }
-      if (res[0].user_id !== req.auth.userId) {
-        return results.status(401).json({ message: "interdit" });
-      }
-      Connection.query(likesAdd, (error, results) => {
-        console.log(results);
-console.log(likesAdd);
-        if (error) {
-          results.json({ error });
+
+exports.Createlikes = (req, res, next) => {
+
+    const sqlgetOneMessage = `SELECT message_send.Id FROM message_send`;
+
+    Connection.query(sqlgetOneMessage,
+        (error,results) => {
+            console.log(results);
+            if (error) {
+                res.json({error});
+            }
         }
-      });
-    });
-  };
+        )
   
+    // Connection.query("INSERT INTO tbl_likes SET ?",
+    //     (error, results) => {
+    //         console.log(results);
+    //         if (error) {
+    //             res.json({error});
+    //         }else {
+    //             res.json({ message: "Message modifié dans la bdd !!" });
+    //         }
+    //     }
+    // )
+}
+
+
+exports.Createlikes = (req, res, next) => {
+    
+}

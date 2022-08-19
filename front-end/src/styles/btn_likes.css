@@ -3,6 +3,8 @@
     text-align: center;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 1rem;
   }
   .like-button {
     border-radius: 0.5rem;

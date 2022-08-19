@@ -23,8 +23,10 @@ const Home = () => {
     // Affichage des messages
     const [TextListReceived, setTextListReceived] = useState([]);
     useEffect(() => {
-        Axios.get(`http://localhost:3000/api/home/${localStorage.user_id}`)
+        Axios.get(`http://localhost:3000/api/home/${localStorage.User_id}`)
             .then((res) => {
+                console.log(res.data);
+                localStorage.setItem("Data", res.data);
                 setTextListReceived(res.data);
             });
     }, []);
