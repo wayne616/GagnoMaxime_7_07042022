@@ -14,7 +14,7 @@ function Setting() {
 
   const DeletUser = (e) => {
     Axios.post(`http://localhost:3000/api/auth/deleteUser/${localStorage.user_id}`)
-    .then((response) => {
+    .then(() => {
       alert("utilisateur supprimer")
     })
     history.push("/");
@@ -47,7 +47,7 @@ function Setting() {
 
     Axios.put(`http://localhost:3000/api/auth/updateUser/${localStorage.user_id}`,
       {Nom : NewNom ,Prenom : NewPrenom , Email : NewEmail}
-    ).then((response) => {
+    ).then(() => {
       alert("utilisateur modifier")
       window.location.reload()
     })
@@ -64,7 +64,6 @@ function Setting() {
         Axios.get(`http://localhost:3000/api/auth/getOneUser/${localStorage.user_id}`)
         .then((response) => {
           setUserInfo(response.data);
-          console.log(response.data);
         });
     }, []);
 

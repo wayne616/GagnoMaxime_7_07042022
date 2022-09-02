@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import moment from 'moment';
-import 'moment/locale/fr'
+import 'moment/locale/fr';
+
 import Axios from 'axios';
 
 import '../../styles/Home.css';
@@ -23,11 +24,9 @@ const Home = () => {
     // Affichage des messages
     const [TextListReceived, setTextListReceived] = useState([]);
     useEffect(() => {
-        Axios.get(`http://localhost:3000/api/home/${localStorage.User_id}`)
-            .then((res) => {
-                console.log(res.data);
-                localStorage.setItem("Data", res.data);
-                setTextListReceived(res.data);
+        Axios.get(`http://localhost:3000/api/home`)
+            .then((response) => {
+                setTextListReceived(response.data);
             });
     }, []);
 
@@ -85,12 +84,12 @@ const Home = () => {
             <section id="Block_Actualité">
                 <div id="Block_Contenue">
                     {TextListReceived.map((val, index) => {
-                        return <div id={"index" + index}>
+                        return <div key={val.Id} id={"index" + index}>
                             <div id="actualiter_received">
 
                                 <div id="block_info">
                                     <div id="info">
-                                        <h1 id="UserName">{val.Prenom} {val.Nom}</h1>
+                                        <h1 id="UserName">{val.Nom} {val.Prenom}</h1>
                                         <p id="Time">Il y a {moment(val.date).startOf('secondes').fromNow('fr')}</p>
                                         {User_id === val.user_id ?
                                             <div id="item">
@@ -140,8 +139,8 @@ const Home = () => {
                                                 </nav> : null
                                             }
                                     </div>
-                                <Likes />
-                            </div>
+                                <Likes Id={val.Id + val.likes}/>
+                                </div>
                         </div>
                     })
                     }

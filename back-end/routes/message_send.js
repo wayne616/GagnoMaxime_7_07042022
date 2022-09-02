@@ -6,20 +6,24 @@ const auth = require('../middleware/auth');
 
 const messageCtrl = require('../controllers/message_send');
  
-// router message
+// router message CRUD
 
 router.post('/', auth, multer, messageCtrl.createMessage);
 
-router.get('/:Id', messageCtrl.getAllMessage);
+router.get('/', messageCtrl.getAllMessage);
 
 router.delete('/:Id',auth, messageCtrl.deleteMessage);
 
+router.put('/:Id', auth, multer, messageCtrl.UpadteMessage);
+
+// router Admin delete 
+
 router.delete('/:Id/:Admin', auth, messageCtrl.deleteMessageAdmin);
 
-router.put('/:Id', auth, multer, messageCtrl.UpadteMessage);
+//router likes 
 
 router.post('/likes/:Id',messageCtrl.Createlikes);
 
-router.post('/dislikes/:Id',messageCtrl.Createdislikes);
+router.get('/likes', messageCtrl.GetLikes);
 
 module.exports = router;
