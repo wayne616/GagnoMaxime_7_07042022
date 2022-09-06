@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
 
 import "../../styles/btn_likes.css";
@@ -26,37 +26,10 @@ export default function App(props) {
     window.location.reload()
   };
 
-  // Affichage des messages
-
-  const [Likes, getlikes] = useState("");
-
-  // const getAllLikes = () => { 
-  //     Axios.get(`http://localhost:3000/api/home/likes`)
-  //     .then((response) => {
-  //       const AllLikes = response.data.Likes;
-  //       getlikes(AllLikes);
-  //     })
-  //     .catch(error => console.error(`Error : ${error}`)); 
-  //   }
-
-    // useEffect(() => {
-    //   getAllLikes(props.Id);
-    //   console.log(getAllLikes);
-    // }, [props.Id]);
- 
-  useEffect(() => {
-      Axios.get(`http://localhost:3000/api/home/likes`,
-      ).then((results) => {
-        console.log(results.props.likes, "jsx");
-          getlikes(results.props.likes)
-      });
-
-  }, [props.likes]);
-
   return (
     <div id="Block_items">
       <button className={`like-button ${isClicked}`} onClick={handleClick}>
-        <span>{`likes | ${Likes} `}</span>
+      <i class="fa-solid fa-heart"> <span>{`likes | ${props.Likes} `}</span></i>
       </button>
     </div>    
   );

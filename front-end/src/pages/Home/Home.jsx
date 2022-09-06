@@ -139,7 +139,7 @@ const Home = () => {
                                                 </nav> : null
                                             }
                                     </div>
-                                <Likes Id={val.Id + val.likes}/>
+                                <Likes Id={val.Id} Likes={val.likes}/>
                                 </div>
                         </div>
                     })

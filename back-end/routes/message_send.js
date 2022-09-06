@@ -24,6 +24,4 @@ router.delete('/:Id/:Admin', auth, messageCtrl.deleteMessageAdmin);
 
 router.post('/likes/:Id',messageCtrl.Createlikes);
 
-router.get('/likes', messageCtrl.GetLikes);
-
 module.exports = router;

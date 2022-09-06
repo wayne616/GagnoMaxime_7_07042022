@@ -162,16 +162,3 @@ exports.Createlikes = (req, res, next) => {
         }
     )
 }
-// Affichage des likes 
-exports.GetLikes = (req, res, next) => {
-
-    const sqlgetAllMessage = `SELECT message_send.Id, likes , user_likes FROM message_send WHERE Id = Id`;
-
-    Connection.query( sqlgetAllMessage, (error, results) => {
-        console.log("ctrl",results);
-        if (error) {
-            res.json({ error });
-        }
-    });
-
-}

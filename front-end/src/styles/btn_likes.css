@@ -8,17 +8,11 @@
   }
   .like-button {
     border-radius: 0.5rem;
+    background-color: white;
     cursor: pointer;
     border: solid 1px grey;
   }
-  #btn_likes {
-    padding-right: 1rem;
-  }
-  #btn_likes :hover {
-    background-color: rgba(0, 0, 255, 0.6);
-    color: white;
-  }
-  #btn_dislikes :hover {
-    background-color: rgba(255, 0, 0, 0.6);
+  #Block_items :hover {
+    background-color: #A22A2A;
     color: white;
   }
