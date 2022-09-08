@@ -29,7 +29,7 @@ export default function App(props) {
   return (
     <div id="Block_items">
       <button className={`like-button ${isClicked}`} onClick={handleClick}>
-      <i class="fa-solid fa-heart"> <span>{`likes | ${props.Likes} `}</span></i>
+      <i className="fa-solid fa-heart"> <span>{`likes | ${props.Likes} `}</span></i>
       </button>
     </div>    
   );

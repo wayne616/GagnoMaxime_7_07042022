@@ -93,21 +93,17 @@ const Home = () => {
                                         <p id="Time">Il y a {moment(val.date).startOf('secondes').fromNow('fr')}</p>
                                         {User_id === val.user_id ?
                                             <div id="item">
-                                                <form id="form_txt_rc" className="Btn_Delete">
                                                     <button id="Delete" className="Button" onClick={() => { Delete(val.Id) }}>
                                                         <i className="fa-solid fa-trash-can"></i>
                                                         Supprimer
                                                     </button>
-                                                </form>
                                             </div> : null ||
                                             Admin ?
                                             <div id="item">
-                                                <form id="form_txt_rc" className="Btn_Delete">
                                                     <button id="Delete" className="Button" onClick={() => { DeleteAdmin(val.Id) }}>
                                                         <i className="fa-solid fa-trash-can"></i>
                                                         Supprimer
                                                     </button>
-                                                </form>
                                             </div> : null
                                         }
                                     </div>
@@ -124,16 +120,15 @@ const Home = () => {
                                             {User_id === val.user_id ?
                                                 <nav id='nav_home'>
                                                     <form method="PUT" id="form_txt_rc" className="Btn_Update_file">
+                             
+                                                                <label htmlFor={"file" + index} className="label sr-only">Photo</label>
+                                                                <input className="input_home" id={"file" + index} name='image' type="file" onChange={(e) => { setImg(e.target.files[0]) }} />
+
+                                                            <label htmlFor={"txt_modify" + index} className="sr-only">Modifier moi</label>
+                                                            <input name="text" className='input_home' id={"txt_modify" + index} onChange={(e) => { setnewText(e.target.value) }} placeholder=" Modifier moi !" />
                                                             <button aria-label={"file" + index} className="Button" id="img_Modify" onClick={(e) => { Update(e, val.Id) }}>
                                                                 <i className="far fa-image icone"></i> 
                                                             </button>
-                                                                <label htmlFor={"file" + index} className="label sr-only">Photo</label>
-                                                                <input className="input_home" id={"file" + index} name='image' type="file" onChange={(e) => { setImg(e.target.files[0]) }} />
-                                                    </form>
-
-                                                    <form method="PUT" id="form_txt_rc" className="Btn_Update">
-                                                            <label htmlFor={"txt_modify" + index} className="sr-only">Modifier moi</label>
-                                                            <input name="text" className='input_home' id={"txt_modify" + index} onChange={(e) => { setnewText(e.target.value) }} placeholder=" Modifier moi !" />
                                                     </form>
                                                 
                                                 </nav> : null
