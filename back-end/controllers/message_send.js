@@ -157,11 +157,8 @@ exports.Createlikes = (req, res, next) => {
             (error,results) => {
                 if (error) {
                     res.json({error});
-                }else {
-                    res.json({ message: "likes ajouté ou modifié dans la bdd !!" });
                 }
-            }
-            )
+            })
         }
     )
 }
