@@ -14,9 +14,11 @@ Lancer Vscode et installer le fichier github
 
 Lancer un terminale cd front-end 
 
-Lancer un second terminale cd back-end
+Lancer un second terminal cd back-end
 
 Installer les nodemodules sur le front-end et le back-end (npm install)
+
+Vérifier si les ports dans le dossier back-end .env correspond bien a votre machine 
 
 Lancer Xampp lancer les serveurs Mysql et Apache 
 
@@ -28,4 +30,4 @@ Importer le document groupomania.sql du fichier github sur phpmyadmin dans la ne
 
 Retourner sur VScode lancer les serveurs front-end et back-end avec npm start et nodemon 
 
-Cela va vous rediriger vers la page de connection crées un utilisateur 
+Cela va vous rediriger vers la page de connection crées un utilisateur (utilisation de chrome requise )

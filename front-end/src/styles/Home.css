@@ -5,10 +5,10 @@ a {
   cursor: pointer;
 }
 div#actualiter_received {
-  border: solid 1px rgb(34, 72, 242);
+  border: solid 1px #4E5166;
   border-radius: 1rem;
   padding: 1rem;
-  box-shadow: 5px 5px 15px 5px #7F7F7F;
+  box-shadow: 5px 5px 15px 5px #4E5166;
   width: 500px;
   margin-bottom: 4rem;
 }
@@ -77,12 +77,12 @@ div#contenue {
   letter-spacing: 2px;
 }
 #Delete{
-  border: 2px solid #A22A2A;
-  color: #A22A2A;
+  border: 2px solid #FD2D01;
+  color: #FD2D01;
 }
 #Delete:hover {
   color: white;
-  background:  #A22A2A;
+  background:  #FD2D01;
 }
 .input_home{
   border-radius: 1rem;

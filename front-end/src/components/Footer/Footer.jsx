@@ -29,7 +29,7 @@ function Footer() {
         formData.append("user_id", localStorage.user_id)
         Axios.post("http://localhost:3000/api/home/",
             formData
-        ).then((response) => {
+        ).then(() => {
             alert("message envoyer")
             window.location.reload()
         })

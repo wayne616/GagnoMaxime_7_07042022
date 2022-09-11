@@ -23,7 +23,7 @@ exports.createMessage = (req, res, next) => {
 
 // Affichage des messages 
 exports.getAllMessage = (req, res, next) => {
-    const sqlMessage = `SELECT Nom, Prenom, text, img, user_id, date, message_send.Id, message_send.admin FROM message_send INNER JOIN user ON message_send.user_id = user.Id  ORDER BY Id `;
+    const sqlMessage = `SELECT Nom, Prenom, text, img, user_id, date, likes, message_send.Id, message_send.admin FROM message_send INNER JOIN user ON message_send.user_id = user.Id  ORDER BY Id `;
     
     Connection.query( sqlMessage, (error, results) => {
         if (error) {
@@ -127,32 +127,38 @@ exports.deleteMessageAdmin = (req, res, next) => {
     
 };
 
+
+// Ajout de likes dans la table message 
 exports.Createlikes = (req, res, next) => {
 
-    const sqlgetOneMessage = `SELECT message_send.Id FROM message_send`;
+    const sqlgetAllMessage = `SELECT message_send.Id, likes , user_likes FROM message_send WHERE Id = ${req.body.post_id}`;
+    const sqlUpdateOneMessage = `UPDATE message_send SET likes = ?, user_likes = ? WHERE Id = ${req.body.post_id} `;
 
-    Connection.query(sqlgetOneMessage,
+    const user_id = parseInt(req.params.Id);
+
+    Connection.query(sqlgetAllMessage,
         (error,results) => {
-            console.log(results);
             if (error) {
                 res.json({error});
             }
+
+            let likes= results[0].likes;
+            let user_likes =  results[0].user_likes.length ? JSON.parse(results[0].user_likes) : [];
+
+            if (user_likes.includes(user_id)) {
+                likes = likes-1;
+                user_likes = user_likes.filter((user)=> user != user_id  ) 
+            }else{
+                likes = likes+1;
+                user_likes.push(user_id)
+            }
+        
+        Connection.query(sqlUpdateOneMessage,[likes, JSON.stringify(user_likes)],
+            (error,results) => {
+                if (error) {
+                    res.json({error});
+                }
+            })
         }
-        )
-  
-    // Connection.query("INSERT INTO tbl_likes SET ?",
-    //     (error, results) => {
-    //         console.log(results);
-    //         if (error) {
-    //             res.json({error});
-    //         }else {
-    //             res.json({ message: "Message modifié dans la bdd !!" });
-    //         }
-    //     }
-    // )
-}
-
-
-exports.Createlikes = (req, res, next) => {
-    
+    )
 }

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import moment from 'moment';
-import 'moment/locale/fr'
+import 'moment/locale/fr';
+
 import Axios from 'axios';
 
 import '../../styles/Home.css';
@@ -23,11 +24,9 @@ const Home = () => {
     // Affichage des messages
     const [TextListReceived, setTextListReceived] = useState([]);
     useEffect(() => {
-        Axios.get(`http://localhost:3000/api/home/${localStorage.User_id}`)
-            .then((res) => {
-                console.log(res.data);
-                localStorage.setItem("Data", res.data);
-                setTextListReceived(res.data);
+        Axios.get(`http://localhost:3000/api/home`)
+            .then((response) => {
+                setTextListReceived(response.data);
             });
     }, []);
 
@@ -85,30 +84,26 @@ const Home = () => {
             <section id="Block_Actualité">
                 <div id="Block_Contenue">
                     {TextListReceived.map((val, index) => {
-                        return <div id={"index" + index}>
+                        return <div key={val.Id} id={"index" + index}>
                             <div id="actualiter_received">
 
                                 <div id="block_info">
                                     <div id="info">
-                                        <h1 id="UserName">{val.Prenom} {val.Nom}</h1>
+                                        <h1 id="UserName">{val.Nom} {val.Prenom}</h1>
                                         <p id="Time">Il y a {moment(val.date).startOf('secondes').fromNow('fr')}</p>
                                         {User_id === val.user_id ?
                                             <div id="item">
-                                                <form id="form_txt_rc" className="Btn_Delete">
                                                     <button id="Delete" className="Button" onClick={() => { Delete(val.Id) }}>
                                                         <i className="fa-solid fa-trash-can"></i>
                                                         Supprimer
                                                     </button>
-                                                </form>
                                             </div> : null ||
                                             Admin ?
                                             <div id="item">
-                                                <form id="form_txt_rc" className="Btn_Delete">
                                                     <button id="Delete" className="Button" onClick={() => { DeleteAdmin(val.Id) }}>
                                                         <i className="fa-solid fa-trash-can"></i>
                                                         Supprimer
                                                     </button>
-                                                </form>
                                             </div> : null
                                         }
                                     </div>
@@ -125,23 +120,22 @@ const Home = () => {
                                             {User_id === val.user_id ?
                                                 <nav id='nav_home'>
                                                     <form method="PUT" id="form_txt_rc" className="Btn_Update_file">
+                             
+                                                                <label htmlFor={"file" + index} className="label sr-only">Photo</label>
+                                                                <input className="input_home" id={"file" + index} name='image' type="file" onChange={(e) => { setImg(e.target.files[0]) }} />
+
+                                                            <label htmlFor={"txt_modify" + index} className="sr-only">Modifier moi</label>
+                                                            <input name="text" className='input_home' id={"txt_modify" + index} onChange={(e) => { setnewText(e.target.value) }} placeholder=" Modifier moi !" />
                                                             <button aria-label={"file" + index} className="Button" id="img_Modify" onClick={(e) => { Update(e, val.Id) }}>
                                                                 <i className="far fa-image icone"></i> 
                                                             </button>
-                                                                <label htmlFor={"file" + index} className="label sr-only">Photo</label>
-                                                                <input className="input_home" id={"file" + index} name='image' type="file" onChange={(e) => { setImg(e.target.files[0]) }} />
-                                                    </form>
-
-                                                    <form method="PUT" id="form_txt_rc" className="Btn_Update">
-                                                            <label htmlFor={"txt_modify" + index} className="sr-only">Modifier moi</label>
-                                                            <input name="text" className='input_home' id={"txt_modify" + index} onChange={(e) => { setnewText(e.target.value) }} placeholder=" Modifier moi !" />
                                                     </form>
                                                 
                                                 </nav> : null
                                             }
                                     </div>
-                                <Likes />
-                            </div>
+                                <Likes Id={val.Id} Likes={val.likes}/>
+                                </div>
                         </div>
                     })
                     }
