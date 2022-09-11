@@ -14,7 +14,7 @@ Lancer Vscode et installer le fichier github
 
 Lancer un terminale cd front-end 
 
-Lancer un second terminale cd back-end
+Lancer un second terminal cd back-end
 
 Installer les nodemodules sur le front-end et le back-end (npm install)
 
