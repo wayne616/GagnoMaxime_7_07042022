@@ -59,6 +59,8 @@ exports.deleteMessage = (req, res, next) => {
             }          
             if(filename) {
                 fs.unlink(`images/${filename}`, () => { });
+            }else {
+                res.json({ message: "Message supprimé de la bdd !!" });
             }
             });
     });
@@ -121,7 +123,10 @@ exports.deleteMessageAdmin = (req, res, next) => {
             }          
             if(filename) {
                 fs.unlink(`images/${filename}`, () => { });
+            }else {
+                res.json({ message: "Message supprimé de la bdd !!" });
             }
+            
             });
     });
     
