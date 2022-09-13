@@ -2,75 +2,38 @@ body {
     font-family: 'Raleway', Arial, sans-serif;
     margin: 0;
   }
-  /* ------nav logo-------*/
-  nav#nav_Logo_co {
-    display: flex;
-    justify-content: center;
-  }
-  /* ------nav logo fin-------*/
-  /* ------section box_connexion-------*/
-  #box_connexion {
-    display: grid;
-    align-items: center;
-    grid-template: "a b ";
-  }
-  /* ------section box_connexion fin -------*/
-  /* ------section login-------*/
-  section#section_Login {
-    padding-left: 15rem;
-  }
-  #Block_Login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem ;
-    border: solid 1px rgb(255, 255, 255);
-    background-color: rgba(13, 89, 255, 0.644);
-    border-radius: 1rem;
-    width: 50%;
-    box-shadow: 5px 5px 30px 9px #0D59FF;
-  }
-  form#form_connexion {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .input_co {
-    border-radius: 3rem;
-    border: solid 1px black;
-  }
-  /* ------section login fin-------*/
-  /* ------section singup-------*/
-  section#section_Signup {
-    border-left: 2px solid black;
-    padding-left: 15rem;
-  }
-  div#Block_Signup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(13, 89, 255, 0.644);
-    padding: 1rem ;
-    border: solid 1px rgb(255, 255, 255);
-    border-radius: 1rem;
-    width: 50%;
-    box-shadow: 5px 5px 30px 9px #0D59FF;
-  }
-  form#form_inscription {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-  
-  /* ------section singup fin-------*/
-  .sr-only{
-    position:absolute;
-    left:-10000px;
-    top:auto;
-    width:1px;
-    height:1px;
-    overflow:hidden;
- }
-  /*---------------Connexion.html fin---------------------*/
+nav#nav_Logo_co {
+  display: flex;
+  justify-content: center;
+}
+section#box_connexion {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.Block_signup_login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem ;
+  border: solid 1px rgb(255, 255, 255);
+  background-color: rgba(13, 89, 255, 0.644);
+  border-radius: 1rem;
+  box-shadow: 5px 5px 30px 9px #0D59FF;
+}
+form#form_connexion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input_co {
+  border-radius: 3rem;
+  border: solid 1px black;
+}
+form#form_inscription {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
   

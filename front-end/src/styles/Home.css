@@ -1,4 +1,3 @@
-/* Modification du code html via au balise */
 a {
   text-decoration: none;
   color: black;
@@ -52,9 +51,6 @@ div#contenue {
   cursor: pointer;
 
 }
-/* #block_menu {
-  font-size: 2rem;
-} */
 .Button{
   outline: none;
   text-align: center;

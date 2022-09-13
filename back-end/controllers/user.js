@@ -66,8 +66,8 @@ exports.login = (req, res, next) => {
 // delete user 
 
 exports.deleteUser = (req, res, next) => {
-  const sqlUserSelect = `SELECT * FROM user WHERE Id = ${req.params.Id}`; 
-  const sqlUserDelete = `DELETE FROM user WHERE Id = ${req.params.Id}`;
+  const sqlUserSelect = `SELECT * FROM user WHERE Id = ${req.auth.userId}`; 
+  const sqlUserDelete = `DELETE FROM user WHERE Id = ${req.auth.userId}`;
  
     Connection.query(sqlUserSelect, (error, result) => {
       if (error){
@@ -89,8 +89,8 @@ exports.deleteUser = (req, res, next) => {
 // Update user connecté 
 
 exports.updateUser = (req, res, next) => {
-  const sqluserSelect = `SELECT * FROM user WHERE Id = ${req.params.Id}`;
-  const sqlUpdateUser = `UPDATE user SET Nom = ?, Prenom = ?, Email = ? WHERE Id = ${req.params.Id}`;
+  const sqluserSelect = `SELECT * FROM user WHERE Id = ${req.auth.userId}`;
+  const sqlUpdateUser = `UPDATE user SET Nom = ?, Prenom = ?, Email = ? WHERE Id = ${req.auth.userId}`;
 
   Connection.query(sqluserSelect, (error, result) => {
     if (error);
@@ -114,7 +114,7 @@ exports.updateUser = (req, res, next) => {
 };
 
 exports.getOneUser = (req, res, next) => {
-  const sqlGetUser = `SELECT * FROM user WHERE Id = ${req.params.Id}`;
+  const sqlGetUser = `SELECT Nom, Prenom, Email FROM user WHERE Id = ${req.auth.userId}`;
 
   Connection.query(sqlGetUser, (error, result) => {
     if (error) {

@@ -35,7 +35,6 @@ const Home = () => {
         Axios.delete(`http://localhost:3000/api/home/${Id}`,
         ).then((response) => {
             alert("message supprimer")
-            window.location.reload()
         }) 
     };
 
@@ -44,28 +43,27 @@ const Home = () => {
         Axios.delete(`http://localhost:3000/api/home/${Id}/${localStorage.Admin}`,
         ).then((response) => {
             alert("message supprimer")
-            window.location.reload()
         }) 
     };
     
     // Modification du message 
     const [newText, setnewText] = useState("");
-    const [Img, setImg] = useState(null);
+    const [Img, setImg] = useState("");
 
     const Update = (e, Id) => {
         e.preventDefault()
 
         const regExMessage = (value) => {
-            return /^[a-zA-Z0-9\s-]{3,250}$/.test(value);
+            return /^(.*[a-zA-Z0-9 óńęąłśćżź\-.,?'":\\/<>_\(\)\!=]+)$/.test(value);
           };
         if(!regExMessage(newText)){
             alert("Le message ne peut pas être vide !")
             return
-        }       
-        if(!Img) {
-            alert("L'image ne peut pas être vide !")
-            return
         }
+        // if(!Img) {
+        //     alert("L'image ne peut pas être vide !")
+        //     return
+        // }
         const formData = new FormData();
         formData.append("text", newText)
         formData.append("image", Img)
@@ -76,6 +74,7 @@ const Home = () => {
             window.location.reload()
         })
         setnewText("")
+        setImg("")
     };
 
     return (

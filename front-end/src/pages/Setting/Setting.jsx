@@ -13,7 +13,7 @@ function Setting() {
   const history = useHistory();
 
   const DeletUser = (e) => {
-    Axios.post(`http://localhost:3000/api/auth/deleteUser/${localStorage.user_id}`)
+    Axios.post(`http://localhost:3000/api/auth/deleteUser`)
     .then(() => {
       alert("utilisateur supprimer")
     })
@@ -45,7 +45,7 @@ function Setting() {
       return
   }
 
-    Axios.put(`http://localhost:3000/api/auth/updateUser/${localStorage.user_id}`,
+    Axios.put(`http://localhost:3000/api/auth/updateUser`,
       {Nom : NewNom ,Prenom : NewPrenom , Email : NewEmail}
     ).then(() => {
       alert("utilisateur modifier")
@@ -61,7 +61,7 @@ function Setting() {
     const [UserInfo, setUserInfo] = useState([]);
 
     useEffect(() => {
-        Axios.get(`http://localhost:3000/api/auth/getOneUser/${localStorage.user_id}`)
+        Axios.get(`http://localhost:3000/api/auth/getOneUser`)
         .then((response) => {
           setUserInfo(response.data);
         });
@@ -107,8 +107,8 @@ function Setting() {
 
           </div>
         </section>
-        {UserInfo.map((val) => {
-        return <section id="statut" className="setting_user">
+        {UserInfo.map((val, index) => {
+        return <section key={val.Id} id={"statut" + index} className="setting_user">
             <div id="infos">
               <h1 id='H1'>Infos compte</h1>
               <ul id="ul_setting">

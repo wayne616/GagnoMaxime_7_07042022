@@ -16,7 +16,7 @@ function Footer() {
         e.preventDefault()
 
         const regExMessage = (value) => {
-            return /^[a-zA-Z0-9\s-]{3,250}$/.test(value);
+            return /^(.*[a-zA-Z0-9 óńęąłśćżź\-.,?'":\\/<>_\(\)\!=]+)$/.test(value);
           };
         if(!regExMessage(text)){
             alert("Le message ne peut pas être vide !")

@@ -93,7 +93,7 @@ function Connexion() {
         </nav>
             <section id="box_connexion">
                 <section id="section_Login">
-                    <div id="Block_Login">
+                    <div id="Block_Login" className='Block_signup_login'>
                         <h1 id="txt_h1">Connexion</h1>
                         <form action="" method="" id="form_connexion" >
                             <label htmlFor="email_login" className="sr-only">email</label>
@@ -110,7 +110,7 @@ function Connexion() {
                     </div>
                 </section>
                 <section id="section_Signup">
-                    <div id="Block_Signup">
+                    <div id="Block_Signup" className='Block_signup_login'>
                         <h1 id="txt_h1">Inscription</h1>
                         <form action="" method="post" id="form_inscription">
                             <label htmlFor="Nom" className="sr-only">nom</label>
