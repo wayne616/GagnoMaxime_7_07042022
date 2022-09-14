@@ -7,6 +7,9 @@ const Connection = require("../config/DB.js");
 //création user hash password 
 
 exports.signup = (req, res, next) => {
+  if(!req.body.email || !req.body.nom || !req.body.prenom || !req.body.password){
+    return res.status(400).json({message : "Veuillez bien remplir le formulaire !!"})
+  }
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
@@ -38,8 +41,8 @@ exports.login = (req, res, next) => {
     `SELECT * FROM user WHERE Email = ? `,
     [email],
     (error, results) => {
-      if (error) {
-        res.status(404).json({ error: error });
+      if (error || !results.length) {
+        return res.status(404).json({ error: "Utilisateur introuvable !" });
       }
       const user = results[0];
       bcrypt
@@ -66,8 +69,8 @@ exports.login = (req, res, next) => {
 // delete user 
 
 exports.deleteUser = (req, res, next) => {
-  const sqlUserSelect = `SELECT * FROM user WHERE Id = ${req.auth.userId}`; 
-  const sqlUserDelete = `DELETE FROM user WHERE Id = ${req.auth.userId}`;
+  const sqlUserSelect = `SELECT * FROM user WHERE Id = '${req.auth.userId}'`; 
+  const sqlUserDelete = `DELETE FROM user WHERE Id = '${req.auth.userId}'`;
  
     Connection.query(sqlUserSelect, (error, result) => {
       if (error){
@@ -89,8 +92,8 @@ exports.deleteUser = (req, res, next) => {
 // Update user connecté 
 
 exports.updateUser = (req, res, next) => {
-  const sqluserSelect = `SELECT * FROM user WHERE Id = ${req.auth.userId}`;
-  const sqlUpdateUser = `UPDATE user SET Nom = ?, Prenom = ?, Email = ? WHERE Id = ${req.auth.userId}`;
+  const sqluserSelect = `SELECT * FROM user WHERE Id = '${req.auth.userId}'`;
+  const sqlUpdateUser = `UPDATE user SET Nom = ?, Prenom = ?, Email = ? WHERE Id = '${req.auth.userId}'`;
 
   Connection.query(sqluserSelect, (error, result) => {
     if (error);
@@ -114,7 +117,7 @@ exports.updateUser = (req, res, next) => {
 };
 
 exports.getOneUser = (req, res, next) => {
-  const sqlGetUser = `SELECT Nom, Prenom, Email FROM user WHERE Id = ${req.auth.userId}`;
+  const sqlGetUser = `SELECT Nom, Prenom, Email FROM user WHERE Id = '${req.auth.userId}'`;
 
   Connection.query(sqlGetUser, (error, result) => {
     if (error) {

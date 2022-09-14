@@ -32,10 +32,10 @@ function Connexion() {
           }
 
           const regExNomPrenomPassword = (value) => {
-            return /^[A-Za-z]{3,20}$/.test(value);
+            return /^[A-Za-z1-9]{3,150}$/.test(value);
           };
 
-        if(!regExNomPrenomPassword (nom, prenom, password)){
+        if(!regExNomPrenomPassword (nom) || !regExNomPrenomPassword (prenom) || !regExNomPrenomPassword (password)){
             alert("Nom, Prenom ,Password invalid")
             return
         }
@@ -55,6 +55,7 @@ function Connexion() {
     // Login user 
     const [UserEmail, setUserEmail] = useState('');
     const [UserPassword, setUserPassword] = useState('');
+    const [LoginError, setLoginEroor] = useState('');
 
     const login = (e) => {
 
@@ -77,12 +78,14 @@ function Connexion() {
             UserPassword: UserPassword,
         })
         .then((response) => {
+            Axios.defaults.headers.common.Authorization = "Bearer " + response.data.token
+            setLoginEroor('');
             localStorage.setItem("token", response.data.token)
             localStorage.setItem("user_id", response.data.userId)
             localStorage.setItem("Admin", response.data.Admin)
             history.push("/home");
             alert("Utilisateur connecté !!");            
-        });
+        }).catch((e) => setLoginEroor(e.response.data.error));
 
     };
 
@@ -105,6 +108,7 @@ function Connexion() {
                             <button className='Button' onClick={login}>
                                 Connexion !
                             </button>
+                            <p>{LoginError}</p>
                             <br />
                         </form>
                     </div>

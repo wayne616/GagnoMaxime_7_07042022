@@ -35,6 +35,7 @@ const Home = () => {
         Axios.delete(`http://localhost:3000/api/home/${Id}`,
         ).then((response) => {
             alert("message supprimer")
+            window.location.reload()
         }) 
     };
 
@@ -43,6 +44,7 @@ const Home = () => {
         Axios.delete(`http://localhost:3000/api/home/${Id}/${localStorage.Admin}`,
         ).then((response) => {
             alert("message supprimer")
+            window.location.reload()
         }) 
     };
     
@@ -60,10 +62,6 @@ const Home = () => {
             alert("Le message ne peut pas être vide !")
             return
         }
-        // if(!Img) {
-        //     alert("L'image ne peut pas être vide !")
-        //     return
-        // }
         const formData = new FormData();
         formData.append("text", newText)
         formData.append("image", Img)

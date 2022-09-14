@@ -23,7 +23,7 @@ exports.createMessage = (req, res, next) => {
 
 // Affichage des messages 
 exports.getAllMessage = (req, res, next) => {
-    const sqlMessage = `SELECT Nom, Prenom, text, img, user_id, date, likes, message_send.Id, message_send.admin FROM message_send INNER JOIN user ON message_send.user_id = user.Id  ORDER BY Id `;
+    const sqlMessage = `SELECT Nom, Prenom, text, img, user_id, date, likes, message_send.Id, message_send.admin FROM message_send INNER JOIN user ON message_send.user_id = user.Id  ORDER BY date DESC `;
     
     Connection.query( sqlMessage, (error, results) => {
         if (error) {
@@ -42,7 +42,7 @@ exports.deleteMessage = (req, res, next) => {
     
     Connection.query(sqlMessageSelect, [text], (error, results) => {
         if (error){
-            res.json({ error });
+           return res.json({ error: error });
         }
         if (results[0].user_id !== req.auth.userId) {
             return res.status(401).json({message :"interdit"})
@@ -98,7 +98,7 @@ exports.UpadteMessage = (req, res, next) => {
 // suppression du message admin
 exports.deleteMessageAdmin = (req, res, next) => {
     const TextUser = req.params.Id;
-    const admin = req.params.Admin;
+    const admin = req.auth.Admin;
 
     const sqlMessagedelete = "DELETE FROM message_send WHERE Id = ? ";
     const sqlMessageSelect = "SELECT Nom , Prenom , text, img, user_id, message_send.admin ,message_send.Id FROM message_send INNER JOIN user ON message_send.user_id = user.id WHERE message_send.Id = ?";

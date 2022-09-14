@@ -27,7 +27,6 @@ function Setting() {
   const [NewEmail, setNewEmail] = useState("");
 
   const Update = (e, Id) => { 
-    e.preventDefault()
 
     const regExemail = (value) => {
       return /^[\w-\.]+@([\w-]+\.)+[\w_]{2,4}$/.test(value);
@@ -40,7 +39,7 @@ function Setting() {
       return /^[A-Za-z]{3,20}$/.test(value);
     };
   
-  if(!regExNomPrenom(NewNom, NewPrenom)){
+  if(!regExNomPrenom(NewNom) || !regExNomPrenom(NewPrenom)){
       alert("Nom, Prenom invalid")
       return
   }
@@ -54,7 +53,6 @@ function Setting() {
     setNewNom("")
     setNewPrenom("")
     setNewEmail("")
-    Id.preventDefault();
   };
 
     // Afficher les données de l'utilisateur
@@ -108,7 +106,7 @@ function Setting() {
           </div>
         </section>
         {UserInfo.map((val, index) => {
-        return <section key={val.Id} id={"statut" + index} className="setting_user">
+        return <section key={val.Id} id={"statut"+index} className="setting_user">
             <div id="infos">
               <h1 id='H1'>Infos compte</h1>
               <ul id="ul_setting">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 12 sep. 2022 à 00:40
+-- Généré le : mer. 14 sep. 2022 à 11:32
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -38,6 +38,13 @@ CREATE TABLE `message_send` (
   `user_likes` varchar(250) DEFAULT '[0]'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `message_send`
+--
+
+INSERT INTO `message_send` (`Id`, `text`, `img`, `date`, `user_id`, `admin`, `likes`, `user_likes`) VALUES
+(457, 'Hello World !!', NULL, '2022-09-14 09:31:47', 55, 1, 0, '[0]');
+
 -- --------------------------------------------------------
 
 --
@@ -58,7 +65,6 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Id`, `Nom`, `Prenom`, `Password`, `Email`, `admin`) VALUES
-(45, 'Gagno', 'Maxime', '$2b$10$wDSNCC6d9KZQAxgvjc/1q.3ZJLJhoPWSwrP5LxZyeF2wV4Crv8tLK', 'test@test.fr', 1),
 (55, 'Admin', 'Admin', '$2b$10$aU2ep1zYYtO28sGpccjfPO6NNBozfEDoHhJzBClxFcr0sDxoMNrkS', 'Admin@Admin.fr', 1);
 
 --
@@ -88,13 +94,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `message_send`
 --
 ALTER TABLE `message_send`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=423;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=458;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- Contraintes pour les tables déchargées

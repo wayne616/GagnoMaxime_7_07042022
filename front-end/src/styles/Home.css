@@ -40,7 +40,7 @@ div#Block_Contenue {
   width: 100%;
 }
 div#block_contenue {
-  box-shadow: 5px 5px 15px 5px #7f7f7f;
+  box-shadow: 5px 5px 15px 5px #4E5166;
   border-radius: 1rem;
 }
 div#contenue {
@@ -57,8 +57,7 @@ div#contenue {
   width: 100px;
   border-radius: 40px;
   background: #fff;
-  border: 2px solid rgb(34, 72, 242);
-  color: rgb(34, 72, 242);
+  border: 2px solid #FFD7D7;
   letter-spacing: 1px;
   font-size: 12px;
   font-weight: bold;
@@ -66,15 +65,14 @@ div#contenue {
   transition: all 0.25s ease;
 }
 .Button:hover {
+  background:  #FFD7D7;
   color: white;
-  background:  rgb(34, 72, 242);
 }
 .Button:active {
   letter-spacing: 2px;
 }
 #Delete{
   border: 2px solid #FD2D01;
-  color: #FD2D01;
 }
 #Delete:hover {
   color: white;
@@ -83,9 +81,7 @@ div#contenue {
 .input_home{
   border-radius: 1rem;
   background: #fff;
-  border: 2px solid rgb(34, 72, 242);
-  color: rgb(34, 72, 242);
-
+  border: 2px solid #FFD7D7;
 } 
 nav#nav_home {
   display: flex;

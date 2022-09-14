@@ -54,7 +54,7 @@ li.li_nav {
   height: 3px;
   width: 0%;
   content: "";
-  background-color: #2980b9;
+  background-color: #FFD7D7;
 }
 #nav_liste a:after {
   left: 0;

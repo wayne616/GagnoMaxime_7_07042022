@@ -19,7 +19,7 @@ function Footer() {
             return /^(.*[a-zA-Z0-9 óńęąłśćżź\-.,?'":\\/<>_\(\)\!=]+)$/.test(value);
           };
         if(!regExMessage(text)){
-            alert("Le message ne peut pas être vide ! (ne pas mettre de ponctuation !)")
+            alert("Le message ne peut pas être vide !")
             return
         }   
         

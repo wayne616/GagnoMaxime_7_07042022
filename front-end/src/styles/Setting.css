@@ -23,8 +23,8 @@ li.li_setting {
 }
 section.setting_user {
     border-radius: 1rem;
-    box-shadow: 5px 5px 15px 5px #A0A0A0;
-    border: solid 1px #A0A0A0;
+    box-shadow: 5px 5px 15px 5px #4E5166;
+    border: solid 1px #4E5166;
 
 }
 .btt_Setting{
@@ -45,7 +45,7 @@ section.setting_user {
 }
 .btt_Setting:hover {
     color: white;
-    background:  #A0A0A0;
+    background:  #4E5166;
 }
 .btt_Setting:active {
     letter-spacing: 2px;
@@ -58,10 +58,11 @@ li.li_infos {
     display: flex;
     align-items: center;
     border-radius: 1rem;
-    border: solid 1px #A0A0A0;
+    border: solid 1px #4E5166;
     margin-bottom: 1rem;
     padding: 0.5rem;
-    background-color: #a0a0a090;
+    color: white;
+    background-color: #4E5166;
 }
 .input_setting{
     border-radius: 1rem;
