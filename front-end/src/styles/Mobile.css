@@ -18,6 +18,11 @@
     div#Block_Signup{
         width: auto;
     }
+    section#box_connexion {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+    }
     /* page Connexion fin --------------------*/
 
     /* header */
@@ -101,9 +106,7 @@
     /* page setting*/
     #section_principal {
     flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    width: 115%;
-    margin-left: 2.5rem;
+    margin: 1rem;
     }
     section.setting_user {
        margin-bottom: 4rem;
