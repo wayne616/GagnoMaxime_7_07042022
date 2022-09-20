@@ -80,7 +80,7 @@ exports.UpadteMessage = (req, res, next) => {
 
         Connection.query(sqlMessageSelect, (error, results) => {
         if (error) {
-            res.json({ error });
+            return res.json({ error });
         }
         if (results[0].user_id !== req.auth.userId) {
             return res.status(401).json({message :"interdit"})
@@ -97,17 +97,14 @@ exports.UpadteMessage = (req, res, next) => {
 
 // suppression du message admin
 exports.deleteMessageAdmin = (req, res, next) => {
-    const TextUser = req.params.Id;
-    const admin = req.auth.Admin;
 
-    const sqlMessagedelete = "DELETE FROM message_send WHERE Id = ? ";
-    const sqlMessageSelect = "SELECT Nom , Prenom , text, img, user_id, message_send.admin ,message_send.Id FROM message_send INNER JOIN user ON message_send.user_id = user.id WHERE message_send.Id = ?";
+    const sqlMessagedelete = `DELETE FROM message_send WHERE Id = '${req.params.Id}'`;
+    const sqlMessageSelect = `SELECT img, user_id, message_send.admin ,message_send.Id FROM message_send INNER JOIN user ON message_send.user_id = user.id WHERE message_send.Id = '${req.params.Id}'  `;
 
-    Connection.query(sqlMessageSelect, [TextUser , admin], (error, results) => {
+    Connection.query(sqlMessageSelect, (error, results) => {
         if (error){
-         res.json({ error });
+          return res.json({ error });
         }
-
         if (results[0].admin !== req.auth.Admin) {
          return res.status(401).json({message :"interdit"})
         }
@@ -117,10 +114,10 @@ exports.deleteMessageAdmin = (req, res, next) => {
             filename = results[0].img.split('/images/')[1]
         }
 
-        Connection.query(sqlMessagedelete, TextUser,(error, results) => {
+        Connection.query(sqlMessagedelete, (error, results) => {
             if (error) {
-                res.json({ error });
-            }          
+               return res.json({ error });
+            } 
             if(filename) {
                 fs.unlink(`images/${filename}`, () => { });
             }else {
