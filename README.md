@@ -24,7 +24,7 @@ Lancer Xampp lancer les serveurs Mysql et Apache
 
 Click sur Admin (Mysql)
 
-Crée une new base de donées dans phpmyadmin
+Crée une new base de donées dans phpmyadmin et modifier le dossier back-end .env 
 
 Importer le document groupomania.sql du fichier github sur phpmyadmin dans la new base de données crée précédemment
 
