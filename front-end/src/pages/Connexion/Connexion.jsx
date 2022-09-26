@@ -23,7 +23,7 @@ function Connexion() {
         // regEx formulaire inscription 
 
         const regExemail = (value) => {
-            return /^[\w-\.]+@([\w-]+\.)+[\w_]{2,4}$/.test(value);
+            return /^[\w-]+@([\w-]+\.)+[\w_]{2,4}$/.test(value);
           }
 
           if(!regExemail(email)){
@@ -64,7 +64,7 @@ function Connexion() {
         // regEx formulaire connexion 
 
         const regExemail = (value) => {
-            return /^[\w-\.]+@([\w-]+\.)+[\w_]{2,4}$/.test(value);
+            return /^[\w-]+@([\w-]+\.)+[\w_]{2,4}$/.test(value);
           };
           if(!regExemail(UserEmail)){
               alert("Email invalid")
